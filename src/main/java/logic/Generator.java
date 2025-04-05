@@ -6,12 +6,9 @@ import model.Server;
 import java.util.*;
 
 public class Generator { // generates queues and clients
-    private ArrayList<Client> generatedClients;
-    private ArrayList<Server> generatedServers;
 
     private int numberOfClients;
     private int numberOfQueues;
-    private int simulationInterval;
 
     private int minimumArrivalTime;
     private int maximumArrivalTime;
@@ -20,12 +17,8 @@ public class Generator { // generates queues and clients
     private int maximumServiceTime;
 
     public Generator() {
-        this.generatedClients = new ArrayList<Client>();
-        this.generatedServers = new ArrayList<Server>();
-
         this.numberOfClients = 0;
         this.numberOfQueues = 0;
-        this.simulationInterval = 0;
 
         this.minimumArrivalTime = 0;
         this.maximumArrivalTime = 0;
@@ -35,12 +28,10 @@ public class Generator { // generates queues and clients
     }
 
     //datele primite vor fi validate in controller(GUI)
-    public void setInputData(int numberOfClients, int numberOfQueues, int simulationInterval,
-                             int minimumArrivalTime, int maximumArrivalTime, int minimumServiceTime,
-                             int maximumServiceTime) {
+    public void setInputData(int numberOfClients, int numberOfQueues, int minimumArrivalTime,
+                             int maximumArrivalTime, int minimumServiceTime, int maximumServiceTime) {
         this.numberOfClients = numberOfClients;
         this.numberOfQueues = numberOfQueues;
-        this.simulationInterval = simulationInterval;
         this.minimumArrivalTime = minimumArrivalTime;
         this.maximumArrivalTime = maximumArrivalTime;
         this.minimumServiceTime = minimumServiceTime;
@@ -57,8 +48,9 @@ public class Generator { // generates queues and clients
     }
 
     //method that generates random clients based on the input data
-    private void generateRandomClients() {
+    public ArrayList<Client> generateRandomClients() {
         Random random = new Random();
+        ArrayList<Client> generatedClients = new ArrayList<>();
         for (int i = 1; i <= numberOfClients; i++) {
             int arrivalTime = random.nextInt(maximumArrivalTime - minimumArrivalTime + 1) + minimumArrivalTime;
             int serviceTime = random.nextInt(maximumServiceTime - minimumServiceTime + 1) + minimumServiceTime;
@@ -68,39 +60,25 @@ public class Generator { // generates queues and clients
 
         //sort list with respect to arrivalTime
         sortList(generatedClients);
-    }
-
-    //method that generates queues
-    private void generateServers() {
-        for (int i = 1; i <= numberOfQueues; i++) {
-            generatedServers.add(new Server(i));
-        }
-    }
-
-    public void generateData() {
-        generateRandomClients();
-        generateServers();
-    }
-
-    public ArrayList<Client> getGeneratedClients() {
         return generatedClients;
     }
 
-    public ArrayList<Server> getGeneratedServers() {
+    //method that generates queues
+    public ArrayList<Server> generateServers() {
+        ArrayList<Server> generatedServers = new ArrayList<>();
+        for (int i = 1; i <= numberOfQueues; i++) {
+            generatedServers.add(new Server(i));
+        }
         return generatedServers;
     }
 
-    // În clasa Generator
+
     public int getNumberOfClients() {
         return numberOfClients;
     }
 
     public int getNumberOfQueues() {
         return numberOfQueues;
-
-    }
-    public int getSimulationInterval() {
-        return simulationInterval;
     }
 
     public int getMinimumArrivalTime() {
@@ -118,6 +96,5 @@ public class Generator { // generates queues and clients
     public int getMaximumServiceTime() {
         return maximumServiceTime;
     }
-
 
 }

@@ -15,8 +15,22 @@ public class Server implements Runnable {
         this.waitingPeriod = new AtomicInteger(0);
     }
 
+    public void addClient(Client client){
+        //add client to queue
+        //increment the waiting period
+    }
+
     public void run() {
-        //inca nu am nimic aici
+        while(true){
+            //take next client from queue
+            //stop the thread for a time equal with the client's service time
+            //decrement the waiting period
+        }
+    }
+
+    public BlockingQueue<Client> getClients() { //nu sunt sigur cum ar trebui sa arate aceasta metoda
+                                                //ce tip returnat ar trebui sa aiba ?
+        return clients;
     }
 
     public int getId() {

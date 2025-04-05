@@ -2,17 +2,18 @@ package gui;
 
 import gui.view.SimulationSetupFrame;
 import logic.Generator;
+import logic.SimulationManager;
 import utils.*;
 
 import javax.swing.*;
 
 public class Controller {
     private SimulationSetupFrame frame;
-    private Generator generator;
+    private SimulationManager manager;
 
-    public Controller(SimulationSetupFrame frame, Generator generator) {
+    public Controller(SimulationSetupFrame frame, SimulationManager manager) {
         this.frame = frame;
-        this.generator = generator;
+        this.manager = manager;
     }
 
     private void validateNumberOfClients(String numberOfClientsStr)
@@ -161,11 +162,10 @@ public class Controller {
         int minimumServiceTime = Integer.parseInt(minimumServiceTimeStr);
         int maximumServiceTime = Integer.parseInt(maximumServiceTimeStr);
 
-        generator.setInputData(numberOfClients, numberOfQueues, simulationInterval,
-                minimumArrivalTime, maximumArrivalTime, minimumServiceTime, maximumServiceTime);
-        generator.generateData();
-
-        frame.showSimulationPanel(generator);
+        manager.setInputData(numberOfClients, numberOfQueues, simulationInterval, minimumArrivalTime,
+                                        maximumArrivalTime, minimumServiceTime, maximumServiceTime);
+        manager.generateData();
+        frame.showSimulationPanel(manager);
     }
 
 }

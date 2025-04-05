@@ -2,6 +2,7 @@ package gui.view;
 
 import gui.Controller;
 import logic.Generator;
+import logic.SimulationManager;
 import model.Client;
 import model.Server;
 
@@ -120,31 +121,31 @@ public class SimulationSetupFrame extends JFrame {
         inputPanel.add(maximumServiceTimeTextField);
     }
 
-    public void showSimulationPanel(Generator generator) {
+    public void showSimulationPanel(SimulationManager manager) {
         contentPane.removeAll();
         contentPane.setLayout(new BorderLayout(10, 10));
         contentPane.setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10));
 
         StringBuilder logBuilder = new StringBuilder();
         logBuilder.append("Input Data:\n");
-        logBuilder.append("Number of Clients: ").append(generator.getNumberOfClients()).append("\n");
-        logBuilder.append("Number of Queues: ").append(generator.getNumberOfQueues()).append("\n");
-        logBuilder.append("Simulation Interval: ").append(generator.getSimulationInterval()).append("\n");
-        logBuilder.append("Minimum Arrival Time: ").append(generator.getMinimumArrivalTime()).append("\n");
-        logBuilder.append("Maximum Arrival Time: ").append(generator.getMaximumArrivalTime()).append("\n");
-        logBuilder.append("Minimum Service Time: ").append(generator.getMinimumServiceTime()).append("\n");
-        logBuilder.append("Maximum Service Time: ").append(generator.getMaximumServiceTime()).append("\n\n");
+        logBuilder.append("Number of Clients: ").append(manager.getNumberOfClients()).append("\n");
+        logBuilder.append("Number of Queues: ").append(manager.getNumberOfQueues()).append("\n");
+        logBuilder.append("Simulation Interval: ").append(manager.getSimulationInterval()).append("\n");
+        logBuilder.append("Minimum Arrival Time: ").append(manager.getMinimumArrivalTime()).append("\n");
+        logBuilder.append("Maximum Arrival Time: ").append(manager.getMaximumArrivalTime()).append("\n");
+        logBuilder.append("Minimum Service Time: ").append(manager.getMinimumServiceTime()).append("\n");
+        logBuilder.append("Maximum Service Time: ").append(manager.getMaximumServiceTime()).append("\n\n");
 
         logBuilder.append("Time 0\n");
         logBuilder.append("Waiting clients:\n");
-        ArrayList<Client> clients = generator.getGeneratedClients();
+        ArrayList<Client> clients = manager.getGeneratedClients();
         for (Client client : clients) {
             logBuilder.append("(")
                     .append(client.getId()).append(",")
                     .append(client.getArrivalTime()).append(",")
                     .append(client.getServiceTime()).append(")\n");
         }
-        ArrayList<Server> servers = generator.getGeneratedServers();
+        ArrayList<Server> servers = manager.getGeneratedServers();
         for (Server server : servers) {
             logBuilder.append("Queue ").append(server.getId()).append(": closed\n");
         }
