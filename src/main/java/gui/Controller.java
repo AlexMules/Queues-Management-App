@@ -168,4 +168,9 @@ public class Controller {
         frame.showSimulationPanel(manager);
     }
 
+    // Metoda ce pornește simularea
+    public void startSimulation() {
+        new Thread(manager).start();
+    }
+
 }

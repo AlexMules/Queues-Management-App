@@ -1,25 +1,42 @@
 package model;
 
 public class Client {
-    private int ID;
-    private int arrivalTime;
-    private int serviceTime;
+    private int id;
+    private final int arrivalTime;
+    private final int serviceTime;
+    private int remainingServiceTime;
 
-    public Client(int ID, int arrivalTime, int serviceTime) {
-        this.ID = ID;
+    public Client(int id, int arrivalTime, int serviceTime) {
+        this.id = id;
         this.arrivalTime = arrivalTime;
         this.serviceTime = serviceTime;
+        this.remainingServiceTime = serviceTime;
+    }
+
+    @Override
+    public String toString() {
+        return "(" + id + ", " + arrivalTime + ", remaining: " + remainingServiceTime + ")";
+    }
+
+    public int getId() {
+        return id;
     }
 
     public int getArrivalTime() {
         return arrivalTime;
     }
 
-    public int getId() {
-        return ID;
-    }
-
     public int getServiceTime() {
         return serviceTime;
+    }
+
+    public int getRemainingServiceTime() {
+        return remainingServiceTime;
+    }
+
+    public void decrementRemainingServiceTime() {
+        if (remainingServiceTime > 0) {
+            remainingServiceTime--;
+        }
     }
 }

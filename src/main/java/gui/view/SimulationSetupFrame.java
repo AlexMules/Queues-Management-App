@@ -145,9 +145,9 @@ public class SimulationSetupFrame extends JFrame {
                     .append(client.getArrivalTime()).append(",")
                     .append(client.getServiceTime()).append(")\n");
         }
-        ArrayList<Server> servers = manager.getGeneratedServers();
-        for (Server server : servers) {
-            logBuilder.append("Queue ").append(server.getId()).append(": closed\n");
+
+        for(int i = 1; i <= manager.getNumberOfQueues(); i++) {
+            logBuilder.append("Queue ").append(i).append(": closed\n");
         }
 
         JTextArea simulationLogArea = new JTextArea(logBuilder.toString());
@@ -157,6 +157,10 @@ public class SimulationSetupFrame extends JFrame {
         contentPane.add(scrollPane, BorderLayout.CENTER);
 
         JButton startSimulationButton = new JButton("Start Simulation");
+        startSimulationButton.addActionListener(e -> {
+            controller.startSimulation();
+        });
+
         JPanel buttonPanel = new JPanel(new FlowLayout(FlowLayout.CENTER));
         buttonPanel.add(startSimulationButton);
         contentPane.add(buttonPanel, BorderLayout.SOUTH);
