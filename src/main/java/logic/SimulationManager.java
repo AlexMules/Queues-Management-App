@@ -54,7 +54,12 @@ public class SimulationManager implements Runnable {
     public void run() {
         try (PrintWriter writer = new PrintWriter(new FileWriter("simulation_log.txt", false))) {
             while (clock.hasNextTick()) {
-                // Distribuim clienții care au sosit:
+                // 1. Incrementează ceasul și notifică serverele
+                synchronized (clock.getLock()) {
+                    clock.tick();
+                }
+
+                // 2. Distribuie clienții care au sosit, pe baza noului currentTime
                 ArrayList<Client> readyClients = new ArrayList<>();
                 for (Client client : new ArrayList<>(clients)) {
                     if (client.getArrivalTime() <= clock.getCurrentTime()) {
@@ -66,30 +71,18 @@ public class SimulationManager implements Runnable {
                     scheduler.dispatchClient(client);
                 }
 
-                // Așteptăm o unitate de timp (simulate real time)
-                try {
-                    Thread.sleep(1000);
-                } catch (InterruptedException e) {
-                    Thread.currentThread().interrupt();
-                    break;
-                }
-
-                // Incrementează ceasul și notifică serverele
-                synchronized (clock.getLock()) {
-                    clock.tick();
-                }
-
-                // Așteptăm ca toate serverele să-și termine procesarea tick-ului
+                // 3. Așteaptă ca toate serverele să-și fi actualizat starea pentru acest tick
                 try {
                     barrier.await();
-                } catch (InterruptedException | BrokenBarrierException e) {
-                    e.printStackTrace();
+                } catch (InterruptedException | java.util.concurrent.BrokenBarrierException ex) {
+                    ex.printStackTrace();
                     break;
                 }
 
-                // Generăm log-ul după ce serverele au actualizat starea:
+                // 4. Generează log-ul stării curente
                 StringBuilder logBuilder = new StringBuilder();
                 logBuilder.append("Time ").append(clock.getCurrentTime()).append("\n");
+
                 logBuilder.append("Waiting clients: ");
                 if (clients.isEmpty()) {
                     logBuilder.append("none");
@@ -118,6 +111,14 @@ public class SimulationManager implements Runnable {
 
                 writer.println(logBuilder.toString());
                 writer.flush();
+
+                // 5. Așteaptă 1 secundă înainte de următorul tick
+                try {
+                    Thread.sleep(1000);
+                } catch (InterruptedException e) {
+                    Thread.currentThread().interrupt();
+                    break;
+                }
             }
         } catch (Exception e) {
             e.printStackTrace();
