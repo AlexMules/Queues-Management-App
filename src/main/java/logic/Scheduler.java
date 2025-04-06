@@ -6,9 +6,8 @@ import model.Server;
 import java.util.ArrayList;
 import java.util.List;
 
+//Sends clients to servers according to the established strategy
 public class Scheduler {
-    //Sends tasks to Servers according to the established strategy
-
     private List<Server> servers;
     private Strategy strategy;
     private final Object lock = new Object();
@@ -17,7 +16,7 @@ public class Scheduler {
         servers = new ArrayList<Server>();
     }
 
-    // Metoda care schimbă strategia în funcție de politica aleasă
+    // metoda care schimba strategia în functie de politica aleasa
     public void changeStrategy(SelectionPolicy policy) {
         switch(policy) {
             case EMPTY_QUEUE:
@@ -29,6 +28,7 @@ public class Scheduler {
         }
     }
 
+    // adauga clientul in coada corespunzatoare
     public void dispatchClient(Client client) {
         synchronized (lock) {
             boolean anyEmpty = false;

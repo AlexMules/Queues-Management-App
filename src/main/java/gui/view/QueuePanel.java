@@ -7,15 +7,28 @@ import java.awt.*;
 
 public class QueuePanel extends JPanel {
     private final Server server;
-    private final int circleDiameter = 20;
-    private final int spacing = 10;
+    private final int circleDiameter = 30;
+    private final int spacing = 12;
 
-    public QueuePanel(Server server) {
+    protected QueuePanel(Server server) {
         this.server = server;
         setPreferredSize(new Dimension(300, 50));
         setBorder(BorderFactory.createLineBorder(Color.LIGHT_GRAY));
         setBackground(new Color(245, 245, 245));
         setOpaque(true);
+    }
+
+    private int drawClientCircle(Graphics g, Client client, int x, int y, Color color) {
+        g.setColor(color);
+        g.fillOval(x, y, circleDiameter, circleDiameter);
+
+        g.setColor(Color.WHITE);
+        String idText = String.valueOf(client.getId());
+        int textWidth = g.getFontMetrics().stringWidth(idText);
+        int textHeight = g.getFontMetrics().getAscent();
+        g.drawString(idText, x + (circleDiameter - textWidth) / 2, y + (circleDiameter + textHeight) / 2 - 2);
+
+        return x + circleDiameter + spacing;
     }
 
     @Override
@@ -24,7 +37,6 @@ public class QueuePanel extends JPanel {
         int x = 10;
         int y = getHeight() / 2 - circleDiameter / 2;
 
-        // Desenează eticheta cozii (ex: "Queue 1:")
         g.setFont(new Font("SansSerif", Font.BOLD, 14));
         g.setColor(Color.BLACK);
         String queueLabel = "Queue " + server.getId() + ": ";
@@ -33,32 +45,17 @@ public class QueuePanel extends JPanel {
         int labelWidth = g.getFontMetrics().stringWidth(queueLabel);
         x += labelWidth + spacing;
 
-        // Setează fontul pentru client (bulină) – textul se desenează cu alb
         g.setFont(new Font("SansSerif", Font.BOLD, 12));
 
-        // Clientul în procesare – desenat în roșu
+        // clientul in procesare (rosu)
         Client processing = server.getProcessingClient();
         if (processing != null) {
-            g.setColor(Color.RED);
-            g.fillOval(x, y, circleDiameter, circleDiameter);
-            g.setColor(Color.WHITE);
-            String idText = String.valueOf(processing.getId());
-            int textWidth = g.getFontMetrics().stringWidth(idText);
-            int textHeight = g.getFontMetrics().getAscent();
-            g.drawString(idText, x + (circleDiameter - textWidth) / 2, y + (circleDiameter + textHeight) / 2 - 2);
-            x += circleDiameter + spacing;
+            x = drawClientCircle(g, processing, x, y, Color.RED);
         }
 
-        // Clienții din coadă – desenat în albastru
+        // clientii din coada (albastru)
         for (Client client : server.getClients()) {
-            g.setColor(Color.BLUE);
-            g.fillOval(x, y, circleDiameter, circleDiameter);
-            g.setColor(Color.WHITE);
-            String idText = String.valueOf(client.getId());
-            int textWidth = g.getFontMetrics().stringWidth(idText);
-            int textHeight = g.getFontMetrics().getAscent();
-            g.drawString(idText, x + (circleDiameter - textWidth) / 2, y + (circleDiameter + textHeight) / 2 - 2);
-            x += circleDiameter + spacing;
+            x = drawClientCircle(g, client, x, y, Color.BLUE);
         }
     }
 }

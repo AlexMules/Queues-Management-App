@@ -1,7 +1,7 @@
 package model;
 
 public class Client {
-    private int id;
+    private final int id;
     private final int arrivalTime;
     private final int serviceTime;
     private int remainingServiceTime;

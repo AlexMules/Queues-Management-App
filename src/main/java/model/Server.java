@@ -8,16 +8,16 @@ import java.util.concurrent.atomic.AtomicInteger;
 import java.util.concurrent.CyclicBarrier;
 import java.util.concurrent.BrokenBarrierException;
 
+//server este echivalent cu o coada (queue)
 public class Server implements Runnable {
     private final int ID;
     private BlockingQueue<Client> clients;
     private AtomicInteger waitingPeriod;
-    private SimulationClock clock;
+    private SimulationClock clock; // simulation clock-ul coordoneaza evolutia in timp a simularii
     private volatile boolean running = true;
-    private Client processingClient;// Clientul care se procesează momentan
-    private boolean clientJustFinished = false;
-    private CyclicBarrier barrier;
-    private ClientCompletion completionListener;
+    private Client processingClient; //clientul care se proceseaza
+    private CyclicBarrier barrier; //barrier pentru sincronizarea servers
+    private ClientCompletion completionListener; //referinta la interfata ClientCompletion
 
     public Server(int ID, SimulationClock clock, CyclicBarrier barrier, ClientCompletion completionListener) {
         this.ID = ID;
@@ -45,14 +45,8 @@ public class Server implements Runnable {
                 synchronized (clock.getLock()) {
                     clock.getLock().wait();
 
-                    if (clientJustFinished) {
-                        // elimină clientul după un tick
-                        processingClient = null;
-                        clientJustFinished = false;
-                    }
-
                     if (processingClient == null) {
-                        processingClient = clients.poll();
+                        processingClient = clients.poll(); //extragem primul client din coada pentru procesare
                         if (processingClient != null) {
                             processClient();
                         }
@@ -60,17 +54,17 @@ public class Server implements Runnable {
                         processClient();
                     }
 
+                    //daca clientul a fost procesat, trimitem informatiile necesare pentru statistici (average times)
                     if (processingClient != null && processingClient.getRemainingServiceTime() <= 0) {
                         int finishTime = clock.getCurrentTime();
                         int waitingTime = finishTime - processingClient.getServiceTime() - processingClient.getArrivalTime();
-                        // Notifică finalizarea clientului
                         completionListener.clientCompleted(processingClient, waitingTime);
                         processingClient = null;
                     }
                 }
 
                 try {
-                    barrier.await();
+                    barrier.await(); //asteapta dupa celelalte thread-uri
                 } catch (BrokenBarrierException e) {
                     e.printStackTrace();
                     break;
@@ -81,6 +75,7 @@ public class Server implements Runnable {
         }
     }
 
+    //opreste server-ul
     public void stopServer() {
         running = false;
         synchronized (clock.getLock()) {

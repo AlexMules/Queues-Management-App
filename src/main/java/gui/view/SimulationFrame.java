@@ -9,10 +9,10 @@ public class SimulationFrame extends JFrame {
     private JPanel mainPanel;
     private JPanel queuesPanel;
 
-    public SimulationFrame(String title, List<Server> servers) {
+    public SimulationFrame(String title) {
         super(title);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        setSize(1000, 700); // mărime rezonabilă pentru conținut extins
+        setSize(1920, 1080);
         setLocationRelativeTo(null);
 
         mainPanel = new JPanel(new BorderLayout(10, 10));
@@ -20,7 +20,7 @@ public class SimulationFrame extends JFrame {
         queuesPanel = new JPanel();
         queuesPanel.setLayout(new BoxLayout(queuesPanel, BoxLayout.Y_AXIS));
 
-        // ⚠️ Scroll pane cu scroll vertical și orizontal
+        // scroll pane (necesar pentru numar mare de cozi si clienti)
         JScrollPane scrollPane = new JScrollPane(
                 queuesPanel,
                 JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED,
@@ -42,10 +42,10 @@ public class SimulationFrame extends JFrame {
 
         for (Server server : servers) {
             QueuePanel qp = new QueuePanel(server);
-            qp.setAlignmentX(Component.LEFT_ALIGNMENT); // aliniere stânga
-            qp.setMaximumSize(new Dimension(Integer.MAX_VALUE, 60)); // înălțime fixă, lățime flexibilă
+            qp.setAlignmentX(Component.LEFT_ALIGNMENT);
+            qp.setMaximumSize(new Dimension(Integer.MAX_VALUE, 60));
             queuesPanel.add(qp);
-            queuesPanel.add(Box.createRigidArea(new Dimension(0, 15))); // spațiu mai mare între cozi
+            queuesPanel.add(Box.createRigidArea(new Dimension(0, 15)));
         }
 
         queuesPanel.revalidate();

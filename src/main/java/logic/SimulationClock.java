@@ -1,9 +1,9 @@
 package logic;
 
 public class SimulationClock {
-    private int currentTime = 0;
-    private final int simulationInterval;
-    private final Object lock = new Object();
+    private int currentTime = 0; //timpul curent al simularii
+    private final int simulationInterval; //intervalul de timp pentru simulare
+    private final Object lock = new Object(); //lacat necesar pentru sincronizare
 
     public SimulationClock(int simulationInterval) {
         this.simulationInterval = simulationInterval;
@@ -13,11 +13,11 @@ public class SimulationClock {
         return currentTime < simulationInterval;
     }
 
-    // Această metodă incrementează timpul și notifică thread-urile
+    // metoda incrementeaza timpul si notifica thread-urile
     public void tick() {
         synchronized(lock) {
             currentTime++;
-            lock.notifyAll(); // notifică toate thread-urile care așteaptă
+            lock.notifyAll(); // notifica toate thread-urile care asteapta
         }
     }
 

@@ -6,7 +6,8 @@ import model.Server;
 import java.util.*;
 import java.util.concurrent.CyclicBarrier;
 
-public class Generator { // generates queues and clients
+//genereaza random clienti si cozi
+public class Generator {
 
     private int numberOfClients;
     private int numberOfQueues;
@@ -28,7 +29,7 @@ public class Generator { // generates queues and clients
         this.maximumServiceTime = 0;
     }
 
-    //datele primite vor fi validate in controller(GUI)
+    //datele primite in GUI vor fi validate de Controller
     public void setInputData(int numberOfClients, int numberOfQueues, int minimumArrivalTime,
                              int maximumArrivalTime, int minimumServiceTime, int maximumServiceTime) {
         this.numberOfClients = numberOfClients;
@@ -48,9 +49,9 @@ public class Generator { // generates queues and clients
         });
     }
 
-    //method that generates random clients based on the input data
+    //metoda care genereaza random clienti pe baza datelor de intrare
     public ArrayList<Client> generateRandomClients() {
-        Random random = new Random();
+        Random random = new Random(); //folosim un obiect de tipul Random
         ArrayList<Client> generatedClients = new ArrayList<>();
         for (int i = 1; i <= numberOfClients; i++) {
             int arrivalTime = random.nextInt(maximumArrivalTime - minimumArrivalTime + 1) + minimumArrivalTime;
@@ -59,14 +60,13 @@ public class Generator { // generates queues and clients
             generatedClients.add(client);
         }
 
-        //sort list with respect to arrivalTime
+        //sorteaza lista in functie de arrival time
         sortList(generatedClients);
         return generatedClients;
     }
 
-    //method that generates queues
-    public ArrayList<Server> generateServers(SimulationClock clock, java.util.concurrent.CyclicBarrier barrier,
-                                             ClientCompletion listener) {
+    //metoda care genereaza servers (queues)
+    public ArrayList<Server> generateServers(SimulationClock clock, CyclicBarrier barrier, ClientCompletion listener) {
         ArrayList<Server> generatedServers = new ArrayList<>();
         for (int i = 1; i <= numberOfQueues; i++) {
             generatedServers.add(new Server(i, clock, barrier, listener));

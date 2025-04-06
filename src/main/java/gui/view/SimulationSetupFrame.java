@@ -119,11 +119,7 @@ public class SimulationSetupFrame extends JFrame {
         inputPanel.add(maximumServiceTimeTextField);
     }
 
-    public void showSimulationPanel(SimulationManager manager) {
-        contentPane.removeAll();
-        contentPane.setLayout(new BorderLayout(10, 10));
-        contentPane.setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10));
-
+    private String buildLog(SimulationManager manager) {
         StringBuilder logBuilder = new StringBuilder();
         logBuilder.append("Input Data:\n");
         logBuilder.append("Number of Clients: ").append(manager.getNumberOfClients()).append("\n");
@@ -147,8 +143,16 @@ public class SimulationSetupFrame extends JFrame {
         for(int i = 1; i <= manager.getNumberOfQueues(); i++) {
             logBuilder.append("Queue ").append(i).append(": closed\n");
         }
+        return logBuilder.toString();
+    }
 
-        JTextArea simulationLogArea = new JTextArea(logBuilder.toString());
+    public void showSimulationPanel(SimulationManager manager) {
+        contentPane.removeAll();
+        contentPane.setLayout(new BorderLayout(10, 10));
+        contentPane.setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10));
+
+        String log = buildLog(manager);
+        JTextArea simulationLogArea = new JTextArea(log);
         simulationLogArea.setEditable(false);
         simulationLogArea.setFont(new Font("Monospaced", Font.PLAIN, 14));
         JScrollPane scrollPane = new JScrollPane(simulationLogArea);

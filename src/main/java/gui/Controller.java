@@ -170,20 +170,15 @@ public class Controller implements SimulationUpdate {
         setupFrame.showSimulationPanel(manager);
     }
 
-    // Metoda ce pornește simularea și afișează SimulationFrame
+    // metoda ce porneste simularea si afiseaza SimulationFrame
     public void startSimulation() {
         manager.setUpdateListener(this);
         Thread simulationThread = new Thread(manager);
         simulationThread.start();
 
-        simulationFrame = new SimulationFrame("Simulation View", manager.getGeneratedServers()); // referință stocată aici
+        simulationFrame = new SimulationFrame("Simulation View");
         setupFrame.dispose();
         SwingUtilities.invokeLater(() -> simulationFrame.setVisible(true));
-
-        // Inițial update la Time 0
-        SwingUtilities.invokeLater(() ->
-                simulationFrame.updateQueues(manager.getGeneratedServers(), manager.getCurrentTime())
-        );
     }
 
     @Override
@@ -196,9 +191,9 @@ public class Controller implements SimulationUpdate {
     @Override
     public void onSimulationEnded() {
         SwingUtilities.invokeLater(() -> {
-            JOptionPane.showMessageDialog(null, "Simulation ended!", "End", JOptionPane.INFORMATION_MESSAGE);
+            JOptionPane.showMessageDialog(null, "Simulation ended!", "OK",
+                    JOptionPane.INFORMATION_MESSAGE);
             System.exit(0);
         });
     }
-
 }
