@@ -6,10 +6,12 @@ import java.io.FileWriter;
 import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Queue;
 import java.util.concurrent.BrokenBarrierException;
+import java.util.concurrent.ConcurrentLinkedQueue;
 import java.util.concurrent.CyclicBarrier;
 
-public class SimulationManager implements Runnable {
+public class SimulationManager implements Runnable, ClientCompletionListener {
     private ArrayList<Client> clients;
     private ArrayList<Server> servers;
     private int simulationInterval;
@@ -17,8 +19,11 @@ public class SimulationManager implements Runnable {
 
     private final Generator generator;
     private final Scheduler scheduler;
-
     private CyclicBarrier barrier; // Bariera pentru sincronizarea tick-urilor
+
+    // Lista thread-safe pentru waiting times
+    private final Queue<Integer> waitingTimes = new ConcurrentLinkedQueue<>();
+    private final Queue<Integer> serviceTimes = new ConcurrentLinkedQueue<>();
 
     public SimulationManager() {
         this.generator = new Generator();
@@ -32,6 +37,7 @@ public class SimulationManager implements Runnable {
         generator.setInputData(numberOfClients, numberOfQueues, minimumArrivalTime, maximumArrivalTime,
                 minimumServiceTime, maximumServiceTime);
         this.clock = new SimulationClock(simulationInterval);
+        // Bariera are numărul de servere + 1 (pentru SimulationManager)
         this.barrier = new CyclicBarrier(numberOfQueues + 1);
     }
 
@@ -47,7 +53,8 @@ public class SimulationManager implements Runnable {
 
     public void generateData() {
         this.clients = generator.generateRandomClients();
-        this.servers = generator.generateServers(clock, barrier);
+        // Transmiterea referinței la ClientCompletionListener (this) către servere
+        this.servers = generator.generateServers(clock, barrier, (ClientCompletionListener) this);
         setServersForScheduler(servers);
         startAllServers(servers);
     }
@@ -72,8 +79,6 @@ public class SimulationManager implements Runnable {
 
                 ArrayList<Client> readyClients = getReadyClients();
                 clients.removeAll(readyClients);
-
-                //dispatch ready clients
                 for (Client client : readyClients) {
                     scheduler.dispatchClient(client);
                 }
@@ -96,10 +101,14 @@ public class SimulationManager implements Runnable {
                     break;
                 }
             }
+            double avgWaitingTime = calculateAverageTime(waitingTimes);
+            double avgServiceTime = calculateAverageTime(serviceTimes);
+            writer.println(String.format("Average waiting time: %.2f", avgWaitingTime));
+            writer.println(String.format("Average service time: %.2f", avgServiceTime));
+            writer.flush();
         } catch (Exception e) {
             e.printStackTrace();
         }
-
         stopAllServers();
     }
 
@@ -135,12 +144,34 @@ public class SimulationManager implements Runnable {
         return logBuilder.toString();
     }
 
+    private double calculateAverageTime(Queue<Integer> listOfTimes) {
+        int sum = 0;
+        int count = listOfTimes.size();
+        for (int wt : listOfTimes) {
+            sum += wt;
+        }
+        if(count > 0){
+            return (double) sum / count;
+        }
+        else {
+            return 0;
+        }
+    }
+
     private void stopAllServers() {
         for (Server server : servers) {
             server.stopServer();
         }
     }
 
+    // Implementarea interfeței ClientCompletionListener:
+    @Override
+    public void clientCompleted(Client client, int waitingTime) {
+        waitingTimes.add(waitingTime);
+        serviceTimes.add(client.getServiceTime());
+    }
+
+    // Getters...
     public ArrayList<Client> getGeneratedClients() {
         return clients;
     }

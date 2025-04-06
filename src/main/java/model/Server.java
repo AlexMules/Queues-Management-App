@@ -1,6 +1,7 @@
 package model;
 
 import logic.SimulationClock;
+import logic.ClientCompletionListener;
 import java.util.concurrent.BlockingQueue;
 import java.util.concurrent.LinkedBlockingQueue;
 import java.util.concurrent.atomic.AtomicInteger;
@@ -11,17 +12,19 @@ public class Server implements Runnable {
     private final int ID;
     private BlockingQueue<Client> clients;
     private AtomicInteger waitingPeriod;
-    private SimulationClock clock; // Referință la ceasul simulării
+    private SimulationClock clock;
     private volatile boolean running = true;
     private Client processingClient; // Clientul care se procesează momentan
-    private CyclicBarrier barrier; // Bariera pentru sincronizarea tick-urilor
+    private CyclicBarrier barrier;
+    private ClientCompletionListener completionListener;
 
-    public Server(int ID, SimulationClock clock, CyclicBarrier barrier) {
+    public Server(int ID, SimulationClock clock, CyclicBarrier barrier, ClientCompletionListener completionListener) {
         this.ID = ID;
         this.clients = new LinkedBlockingQueue<>();
         this.waitingPeriod = new AtomicInteger(0);
         this.clock = clock;
         this.barrier = barrier;
+        this.completionListener = completionListener;
     }
 
     public void addClient(Client client) {
@@ -40,7 +43,6 @@ public class Server implements Runnable {
             while (running) {
                 synchronized (clock.getLock()) {
                     clock.getLock().wait();
-                    // Procesează tick-ul curent
                     if (processingClient == null) {
                         processingClient = clients.poll();
                         if (processingClient != null) {
@@ -50,10 +52,13 @@ public class Server implements Runnable {
                         processClient();
                     }
                     if (processingClient != null && processingClient.getRemainingServiceTime() <= 0) {
+                        int finishTime = clock.getCurrentTime();
+                        int waitingTime = finishTime - processingClient.getServiceTime() - processingClient.getArrivalTime();
+                        // Notifică finalizarea clientului
+                        completionListener.clientCompleted(processingClient, waitingTime);
                         processingClient = null;
                     }
                 }
-                // Așteaptă ca toate thread-urile să fi procesat tick-ul
                 try {
                     barrier.await();
                 } catch (BrokenBarrierException e) {

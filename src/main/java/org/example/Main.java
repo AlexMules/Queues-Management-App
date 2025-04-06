@@ -13,8 +13,5 @@ public class Main {
 
         frame.setController(controller);
         frame.setVisible(true);
-
-        /* Thread thread = new Thread(manager);
-        thread.start(); */
     }
 }
