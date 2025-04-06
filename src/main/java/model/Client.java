@@ -18,6 +18,12 @@ public class Client {
         return "(" + id + ", " + arrivalTime + ", remaining: " + remainingServiceTime + ")";
     }
 
+    public void decrementRemainingServiceTime() {
+        if (remainingServiceTime > 0) {
+            remainingServiceTime--;
+        }
+    }
+
     public int getId() {
         return id;
     }
@@ -32,11 +38,5 @@ public class Client {
 
     public int getRemainingServiceTime() {
         return remainingServiceTime;
-    }
-
-    public void decrementRemainingServiceTime() {
-        if (remainingServiceTime > 0) {
-            remainingServiceTime--;
-        }
     }
 }

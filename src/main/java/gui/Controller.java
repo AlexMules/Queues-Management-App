@@ -1,7 +1,6 @@
 package gui;
 
 import gui.view.SimulationSetupFrame;
-import logic.Generator;
 import logic.SimulationManager;
 import utils.*;
 

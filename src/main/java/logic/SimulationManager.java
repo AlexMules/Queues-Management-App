@@ -25,6 +25,9 @@ public class SimulationManager implements Runnable, ClientCompletionListener {
     private final Queue<Integer> waitingTimes = new ConcurrentLinkedQueue<>();
     private final Queue<Integer> serviceTimes = new ConcurrentLinkedQueue<>();
 
+    private int peakTime = 0;
+    private int maxWaitingCount = 0;
+
     public SimulationManager() {
         this.generator = new Generator();
         this.scheduler = new Scheduler();
@@ -69,6 +72,17 @@ public class SimulationManager implements Runnable, ClientCompletionListener {
         return readyClients;
     }
 
+    private void updateMaxWaitingCount() {
+        int waitingCount = 0;
+        for (Server server : servers) {
+            waitingCount += server.getClients().size(); // only the waiting queue, not the processing client
+        }
+        if (waitingCount > maxWaitingCount) {
+            maxWaitingCount = waitingCount;
+            peakTime = clock.getCurrentTime();
+        }
+    }
+
     @Override
     public void run() {
         try (PrintWriter writer = new PrintWriter(new FileWriter("log_of_events.txt", false))) {
@@ -85,6 +99,8 @@ public class SimulationManager implements Runnable, ClientCompletionListener {
 
                 try {
                     barrier.await();
+                    // After barrier.await(), update the peak waiting count:
+                    updateMaxWaitingCount();
                 } catch (InterruptedException | BrokenBarrierException ex) {
                     ex.printStackTrace();
                     break;
@@ -105,6 +121,7 @@ public class SimulationManager implements Runnable, ClientCompletionListener {
             double avgServiceTime = calculateAverageTime(serviceTimes);
             writer.println(String.format("Average waiting time: %.2f", avgWaitingTime));
             writer.println(String.format("Average service time: %.2f", avgServiceTime));
+            writer.println(String.format("Peak hour: %d (waiting clients: %d)", peakTime, maxWaitingCount));
             writer.flush();
         } catch (Exception e) {
             e.printStackTrace();
@@ -116,15 +133,24 @@ public class SimulationManager implements Runnable, ClientCompletionListener {
         StringBuilder logBuilder = new StringBuilder();
         synchronized (clock.getLock()) {
             logBuilder.append("Time ").append(clock.getCurrentTime()).append("\n");
+
+            // Afișează clienții din waiting (cu line break după 4 clienți)
             logBuilder.append("Waiting clients: ");
             if (clients.isEmpty()) {
                 logBuilder.append("none");
             } else {
+                int count = 0;
                 for (Client client : clients) {
                     logBuilder.append(client).append("; ");
+                    count++;
+                    if (count % 4 == 0) {
+                        logBuilder.append("\n         ");
+                    }
                 }
             }
             logBuilder.append("\n");
+
+            // Afișează starea fiecărei cozi (server)
             for (Server server : servers) {
                 logBuilder.append("Queue ").append(server.getId()).append(": ");
                 Client processing = server.getProcessingClient();
@@ -134,8 +160,13 @@ public class SimulationManager implements Runnable, ClientCompletionListener {
                 if (server.getClients().isEmpty() && processing == null) {
                     logBuilder.append("closed");
                 } else {
+                    int count = 0;
                     for (Client client : server.getClients()) {
                         logBuilder.append(client).append("; ");
+                        count++;
+                        if (count % 4 == 0) {
+                            logBuilder.append("\n         ");
+                        }
                     }
                 }
                 logBuilder.append("\n");

@@ -1,10 +1,8 @@
 package gui.view;
 
 import gui.Controller;
-import logic.Generator;
 import logic.SimulationManager;
 import model.Client;
-import model.Server;
 
 import javax.swing.*;
 import java.awt.*;
@@ -168,5 +166,4 @@ public class SimulationSetupFrame extends JFrame {
         contentPane.revalidate();
         contentPane.repaint();
     }
-
 }
