@@ -1,7 +1,7 @@
 package model;
 
+import logic.ClientCompletion;
 import logic.SimulationClock;
-import logic.ClientCompletionListener;
 import java.util.concurrent.BlockingQueue;
 import java.util.concurrent.LinkedBlockingQueue;
 import java.util.concurrent.atomic.AtomicInteger;
@@ -16,9 +16,9 @@ public class Server implements Runnable {
     private volatile boolean running = true;
     private Client processingClient; // Clientul care se procesează momentan
     private CyclicBarrier barrier;
-    private ClientCompletionListener completionListener;
+    private ClientCompletion completionListener;
 
-    public Server(int ID, SimulationClock clock, CyclicBarrier barrier, ClientCompletionListener completionListener) {
+    public Server(int ID, SimulationClock clock, CyclicBarrier barrier, ClientCompletion completionListener) {
         this.ID = ID;
         this.clients = new LinkedBlockingQueue<>();
         this.waitingPeriod = new AtomicInteger(0);

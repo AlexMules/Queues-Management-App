@@ -66,7 +66,7 @@ public class Generator { // generates queues and clients
 
     //method that generates queues
     public ArrayList<Server> generateServers(SimulationClock clock, java.util.concurrent.CyclicBarrier barrier,
-                                             ClientCompletionListener listener) {
+                                             ClientCompletion listener) {
         ArrayList<Server> generatedServers = new ArrayList<>();
         for (int i = 1; i <= numberOfQueues; i++) {
             generatedServers.add(new Server(i, clock, barrier, listener));

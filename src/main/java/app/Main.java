@@ -1,4 +1,4 @@
-package org.example;
+package app;
 
 import gui.Controller;
 import gui.view.SimulationSetupFrame;

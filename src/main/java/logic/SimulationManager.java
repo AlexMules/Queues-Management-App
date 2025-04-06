@@ -11,7 +11,7 @@ import java.util.concurrent.BrokenBarrierException;
 import java.util.concurrent.ConcurrentLinkedQueue;
 import java.util.concurrent.CyclicBarrier;
 
-public class SimulationManager implements Runnable, ClientCompletionListener {
+public class SimulationManager implements Runnable, ClientCompletion {
     private ArrayList<Client> clients;
     private ArrayList<Server> servers;
     private int simulationInterval;
@@ -57,7 +57,7 @@ public class SimulationManager implements Runnable, ClientCompletionListener {
     public void generateData() {
         this.clients = generator.generateRandomClients();
         // Transmiterea referinței la ClientCompletionListener (this) către servere
-        this.servers = generator.generateServers(clock, barrier, (ClientCompletionListener) this);
+        this.servers = generator.generateServers(clock, barrier, (ClientCompletion) this);
         setServersForScheduler(servers);
         startAllServers(servers);
     }
