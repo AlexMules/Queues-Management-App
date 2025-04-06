@@ -1,704 +1,320 @@
 Time 1
-Waiting clients: (12, 2, remaining: 2); (42, 2, remaining: 1); (19, 3, remaining: 5); (25, 3, remaining: 6); 
-         (14, 4, remaining: 6); (7, 7, remaining: 6); (27, 7, remaining: 7); (41, 7, remaining: 4); 
-         (5, 8, remaining: 1); (1, 10, remaining: 3); (17, 10, remaining: 3); (8, 11, remaining: 4); 
-         (23, 11, remaining: 4); (47, 11, remaining: 1); (35, 12, remaining: 7); (3, 13, remaining: 3); 
-         (22, 13, remaining: 7); (39, 13, remaining: 5); (20, 15, remaining: 5); (31, 15, remaining: 6); 
-         (50, 15, remaining: 5); (9, 16, remaining: 7); (43, 16, remaining: 5); (13, 18, remaining: 3); 
-         (30, 18, remaining: 4); (10, 19, remaining: 3); (16, 20, remaining: 5); (24, 20, remaining: 4); 
-         (21, 21, remaining: 5); (33, 21, remaining: 3); (45, 22, remaining: 5); (15, 24, remaining: 7); 
-         (11, 25, remaining: 5); (48, 25, remaining: 4); (18, 26, remaining: 4); (29, 27, remaining: 2); 
-         (32, 27, remaining: 1); (49, 29, remaining: 1); (2, 31, remaining: 1); (28, 31, remaining: 3); 
-         (4, 33, remaining: 5); (37, 33, remaining: 3); (40, 33, remaining: 4); (36, 35, remaining: 1); 
-         (34, 36, remaining: 1); (6, 37, remaining: 4); (44, 38, remaining: 2); (38, 39, remaining: 3); 
-         (26, 40, remaining: 4); (46, 40, remaining: 1); 
+Waiting clients: (8, 2, remaining: 6); (9, 2, remaining: 5); (10, 2, remaining: 4); (17, 3, remaining: 6); 
+         (21, 4, remaining: 4); (12, 5, remaining: 3); (20, 5, remaining: 3); (19, 7, remaining: 4); 
+         (2, 8, remaining: 3); (5, 8, remaining: 3); (15, 8, remaining: 5); (22, 8, remaining: 2); 
+         (14, 9, remaining: 3); (25, 9, remaining: 6); (4, 10, remaining: 2); (7, 12, remaining: 2); 
+         (1, 13, remaining: 2); (6, 14, remaining: 6); (13, 14, remaining: 3); (18, 14, remaining: 6); 
+         (3, 15, remaining: 5); (23, 15, remaining: 5); (11, 16, remaining: 3); (16, 16, remaining: 5); 
+         (24, 18, remaining: 4); 
 Queue 1: closed
 Queue 2: closed
 Queue 3: closed
 Queue 4: closed
 Queue 5: closed
+Queue 6: closed
 
 Time 2
-Waiting clients: (19, 3, remaining: 5); (25, 3, remaining: 6); (14, 4, remaining: 6); (7, 7, remaining: 6); 
-         (27, 7, remaining: 7); (41, 7, remaining: 4); (5, 8, remaining: 1); (1, 10, remaining: 3); 
-         (17, 10, remaining: 3); (8, 11, remaining: 4); (23, 11, remaining: 4); (47, 11, remaining: 1); 
-         (35, 12, remaining: 7); (3, 13, remaining: 3); (22, 13, remaining: 7); (39, 13, remaining: 5); 
-         (20, 15, remaining: 5); (31, 15, remaining: 6); (50, 15, remaining: 5); (9, 16, remaining: 7); 
-         (43, 16, remaining: 5); (13, 18, remaining: 3); (30, 18, remaining: 4); (10, 19, remaining: 3); 
-         (16, 20, remaining: 5); (24, 20, remaining: 4); (21, 21, remaining: 5); (33, 21, remaining: 3); 
-         (45, 22, remaining: 5); (15, 24, remaining: 7); (11, 25, remaining: 5); (48, 25, remaining: 4); 
-         (18, 26, remaining: 4); (29, 27, remaining: 2); (32, 27, remaining: 1); (49, 29, remaining: 1); 
-         (2, 31, remaining: 1); (28, 31, remaining: 3); (4, 33, remaining: 5); (37, 33, remaining: 3); 
-         (40, 33, remaining: 4); (36, 35, remaining: 1); (34, 36, remaining: 1); (6, 37, remaining: 4); 
-         (44, 38, remaining: 2); (38, 39, remaining: 3); (26, 40, remaining: 4); (46, 40, remaining: 1); 
-         
-Queue 1: (12, 2, remaining: 2); 
-Queue 2: (42, 2, remaining: 1); 
-Queue 3: closed
+Waiting clients: (17, 3, remaining: 6); (21, 4, remaining: 4); (12, 5, remaining: 3); (20, 5, remaining: 3); 
+         (19, 7, remaining: 4); (2, 8, remaining: 3); (5, 8, remaining: 3); (15, 8, remaining: 5); 
+         (22, 8, remaining: 2); (14, 9, remaining: 3); (25, 9, remaining: 6); (4, 10, remaining: 2); 
+         (7, 12, remaining: 2); (1, 13, remaining: 2); (6, 14, remaining: 6); (13, 14, remaining: 3); 
+         (18, 14, remaining: 6); (3, 15, remaining: 5); (23, 15, remaining: 5); (11, 16, remaining: 3); 
+         (16, 16, remaining: 5); (24, 18, remaining: 4); 
+Queue 1: (8, 2, remaining: 6); 
+Queue 2: (9, 2, remaining: 5); 
+Queue 3: (10, 2, remaining: 4); 
 Queue 4: closed
 Queue 5: closed
+Queue 6: closed
 
 Time 3
-Waiting clients: (14, 4, remaining: 6); (7, 7, remaining: 6); (27, 7, remaining: 7); (41, 7, remaining: 4); 
-         (5, 8, remaining: 1); (1, 10, remaining: 3); (17, 10, remaining: 3); (8, 11, remaining: 4); 
-         (23, 11, remaining: 4); (47, 11, remaining: 1); (35, 12, remaining: 7); (3, 13, remaining: 3); 
-         (22, 13, remaining: 7); (39, 13, remaining: 5); (20, 15, remaining: 5); (31, 15, remaining: 6); 
-         (50, 15, remaining: 5); (9, 16, remaining: 7); (43, 16, remaining: 5); (13, 18, remaining: 3); 
-         (30, 18, remaining: 4); (10, 19, remaining: 3); (16, 20, remaining: 5); (24, 20, remaining: 4); 
-         (21, 21, remaining: 5); (33, 21, remaining: 3); (45, 22, remaining: 5); (15, 24, remaining: 7); 
-         (11, 25, remaining: 5); (48, 25, remaining: 4); (18, 26, remaining: 4); (29, 27, remaining: 2); 
-         (32, 27, remaining: 1); (49, 29, remaining: 1); (2, 31, remaining: 1); (28, 31, remaining: 3); 
-         (4, 33, remaining: 5); (37, 33, remaining: 3); (40, 33, remaining: 4); (36, 35, remaining: 1); 
-         (34, 36, remaining: 1); (6, 37, remaining: 4); (44, 38, remaining: 2); (38, 39, remaining: 3); 
-         (26, 40, remaining: 4); (46, 40, remaining: 1); 
-Queue 1: Processing: (12, 2, remaining: 1) | 
-Queue 2: closed
-Queue 3: Processing: (19, 3, remaining: 4) | (25, 3, remaining: 6); 
-Queue 4: closed
+Waiting clients: (21, 4, remaining: 4); (12, 5, remaining: 3); (20, 5, remaining: 3); (19, 7, remaining: 4); 
+         (2, 8, remaining: 3); (5, 8, remaining: 3); (15, 8, remaining: 5); (22, 8, remaining: 2); 
+         (14, 9, remaining: 3); (25, 9, remaining: 6); (4, 10, remaining: 2); (7, 12, remaining: 2); 
+         (1, 13, remaining: 2); (6, 14, remaining: 6); (13, 14, remaining: 3); (18, 14, remaining: 6); 
+         (3, 15, remaining: 5); (23, 15, remaining: 5); (11, 16, remaining: 3); (16, 16, remaining: 5); 
+         (24, 18, remaining: 4); 
+Queue 1: Processing: (8, 2, remaining: 5) | 
+Queue 2: Processing: (9, 2, remaining: 4) | 
+Queue 3: Processing: (10, 2, remaining: 3) | 
+Queue 4: Processing: (17, 3, remaining: 5) | 
 Queue 5: closed
+Queue 6: closed
 
 Time 4
-Waiting clients: (7, 7, remaining: 6); (27, 7, remaining: 7); (41, 7, remaining: 4); (5, 8, remaining: 1); 
-         (1, 10, remaining: 3); (17, 10, remaining: 3); (8, 11, remaining: 4); (23, 11, remaining: 4); 
-         (47, 11, remaining: 1); (35, 12, remaining: 7); (3, 13, remaining: 3); (22, 13, remaining: 7); 
-         (39, 13, remaining: 5); (20, 15, remaining: 5); (31, 15, remaining: 6); (50, 15, remaining: 5); 
-         (9, 16, remaining: 7); (43, 16, remaining: 5); (13, 18, remaining: 3); (30, 18, remaining: 4); 
-         (10, 19, remaining: 3); (16, 20, remaining: 5); (24, 20, remaining: 4); (21, 21, remaining: 5); 
-         (33, 21, remaining: 3); (45, 22, remaining: 5); (15, 24, remaining: 7); (11, 25, remaining: 5); 
-         (48, 25, remaining: 4); (18, 26, remaining: 4); (29, 27, remaining: 2); (32, 27, remaining: 1); 
-         (49, 29, remaining: 1); (2, 31, remaining: 1); (28, 31, remaining: 3); (4, 33, remaining: 5); 
-         (37, 33, remaining: 3); (40, 33, remaining: 4); (36, 35, remaining: 1); (34, 36, remaining: 1); 
-         (6, 37, remaining: 4); (44, 38, remaining: 2); (38, 39, remaining: 3); (26, 40, remaining: 4); 
-         (46, 40, remaining: 1); 
-Queue 1: closed
-Queue 2: (14, 4, remaining: 6); 
-Queue 3: Processing: (19, 3, remaining: 3) | (25, 3, remaining: 6); 
-Queue 4: closed
-Queue 5: closed
+Waiting clients: (12, 5, remaining: 3); (20, 5, remaining: 3); (19, 7, remaining: 4); (2, 8, remaining: 3); 
+         (5, 8, remaining: 3); (15, 8, remaining: 5); (22, 8, remaining: 2); (14, 9, remaining: 3); 
+         (25, 9, remaining: 6); (4, 10, remaining: 2); (7, 12, remaining: 2); (1, 13, remaining: 2); 
+         (6, 14, remaining: 6); (13, 14, remaining: 3); (18, 14, remaining: 6); (3, 15, remaining: 5); 
+         (23, 15, remaining: 5); (11, 16, remaining: 3); (16, 16, remaining: 5); (24, 18, remaining: 4); 
+         
+Queue 1: Processing: (8, 2, remaining: 4) | 
+Queue 2: Processing: (9, 2, remaining: 3) | 
+Queue 3: Processing: (10, 2, remaining: 2) | 
+Queue 4: Processing: (17, 3, remaining: 4) | 
+Queue 5: (21, 4, remaining: 4); 
+Queue 6: closed
 
 Time 5
-Waiting clients: (7, 7, remaining: 6); (27, 7, remaining: 7); (41, 7, remaining: 4); (5, 8, remaining: 1); 
-         (1, 10, remaining: 3); (17, 10, remaining: 3); (8, 11, remaining: 4); (23, 11, remaining: 4); 
-         (47, 11, remaining: 1); (35, 12, remaining: 7); (3, 13, remaining: 3); (22, 13, remaining: 7); 
-         (39, 13, remaining: 5); (20, 15, remaining: 5); (31, 15, remaining: 6); (50, 15, remaining: 5); 
-         (9, 16, remaining: 7); (43, 16, remaining: 5); (13, 18, remaining: 3); (30, 18, remaining: 4); 
-         (10, 19, remaining: 3); (16, 20, remaining: 5); (24, 20, remaining: 4); (21, 21, remaining: 5); 
-         (33, 21, remaining: 3); (45, 22, remaining: 5); (15, 24, remaining: 7); (11, 25, remaining: 5); 
-         (48, 25, remaining: 4); (18, 26, remaining: 4); (29, 27, remaining: 2); (32, 27, remaining: 1); 
-         (49, 29, remaining: 1); (2, 31, remaining: 1); (28, 31, remaining: 3); (4, 33, remaining: 5); 
-         (37, 33, remaining: 3); (40, 33, remaining: 4); (36, 35, remaining: 1); (34, 36, remaining: 1); 
-         (6, 37, remaining: 4); (44, 38, remaining: 2); (38, 39, remaining: 3); (26, 40, remaining: 4); 
-         (46, 40, remaining: 1); 
-Queue 1: closed
-Queue 2: Processing: (14, 4, remaining: 5) | 
-Queue 3: Processing: (19, 3, remaining: 2) | (25, 3, remaining: 6); 
-Queue 4: closed
-Queue 5: closed
+Waiting clients: (19, 7, remaining: 4); (2, 8, remaining: 3); (5, 8, remaining: 3); (15, 8, remaining: 5); 
+         (22, 8, remaining: 2); (14, 9, remaining: 3); (25, 9, remaining: 6); (4, 10, remaining: 2); 
+         (7, 12, remaining: 2); (1, 13, remaining: 2); (6, 14, remaining: 6); (13, 14, remaining: 3); 
+         (18, 14, remaining: 6); (3, 15, remaining: 5); (23, 15, remaining: 5); (11, 16, remaining: 3); 
+         (16, 16, remaining: 5); (24, 18, remaining: 4); 
+Queue 1: Processing: (8, 2, remaining: 3) | 
+Queue 2: Processing: (9, 2, remaining: 2) | 
+Queue 3: Processing: (10, 2, remaining: 1) | (20, 5, remaining: 3); 
+Queue 4: Processing: (17, 3, remaining: 3) | 
+Queue 5: Processing: (21, 4, remaining: 3) | 
+Queue 6: Processing: (12, 5, remaining: 2) | 
 
 Time 6
-Waiting clients: (7, 7, remaining: 6); (27, 7, remaining: 7); (41, 7, remaining: 4); (5, 8, remaining: 1); 
-         (1, 10, remaining: 3); (17, 10, remaining: 3); (8, 11, remaining: 4); (23, 11, remaining: 4); 
-         (47, 11, remaining: 1); (35, 12, remaining: 7); (3, 13, remaining: 3); (22, 13, remaining: 7); 
-         (39, 13, remaining: 5); (20, 15, remaining: 5); (31, 15, remaining: 6); (50, 15, remaining: 5); 
-         (9, 16, remaining: 7); (43, 16, remaining: 5); (13, 18, remaining: 3); (30, 18, remaining: 4); 
-         (10, 19, remaining: 3); (16, 20, remaining: 5); (24, 20, remaining: 4); (21, 21, remaining: 5); 
-         (33, 21, remaining: 3); (45, 22, remaining: 5); (15, 24, remaining: 7); (11, 25, remaining: 5); 
-         (48, 25, remaining: 4); (18, 26, remaining: 4); (29, 27, remaining: 2); (32, 27, remaining: 1); 
-         (49, 29, remaining: 1); (2, 31, remaining: 1); (28, 31, remaining: 3); (4, 33, remaining: 5); 
-         (37, 33, remaining: 3); (40, 33, remaining: 4); (36, 35, remaining: 1); (34, 36, remaining: 1); 
-         (6, 37, remaining: 4); (44, 38, remaining: 2); (38, 39, remaining: 3); (26, 40, remaining: 4); 
-         (46, 40, remaining: 1); 
-Queue 1: closed
-Queue 2: Processing: (14, 4, remaining: 4) | 
-Queue 3: Processing: (19, 3, remaining: 1) | (25, 3, remaining: 6); 
-Queue 4: closed
-Queue 5: closed
+Waiting clients: (19, 7, remaining: 4); (2, 8, remaining: 3); (5, 8, remaining: 3); (15, 8, remaining: 5); 
+         (22, 8, remaining: 2); (14, 9, remaining: 3); (25, 9, remaining: 6); (4, 10, remaining: 2); 
+         (7, 12, remaining: 2); (1, 13, remaining: 2); (6, 14, remaining: 6); (13, 14, remaining: 3); 
+         (18, 14, remaining: 6); (3, 15, remaining: 5); (23, 15, remaining: 5); (11, 16, remaining: 3); 
+         (16, 16, remaining: 5); (24, 18, remaining: 4); 
+Queue 1: Processing: (8, 2, remaining: 2) | 
+Queue 2: Processing: (9, 2, remaining: 1) | 
+Queue 3: (20, 5, remaining: 3); 
+Queue 4: Processing: (17, 3, remaining: 2) | 
+Queue 5: Processing: (21, 4, remaining: 2) | 
+Queue 6: Processing: (12, 5, remaining: 1) | 
 
 Time 7
-Waiting clients: (5, 8, remaining: 1); (1, 10, remaining: 3); (17, 10, remaining: 3); (8, 11, remaining: 4); 
-         (23, 11, remaining: 4); (47, 11, remaining: 1); (35, 12, remaining: 7); (3, 13, remaining: 3); 
-         (22, 13, remaining: 7); (39, 13, remaining: 5); (20, 15, remaining: 5); (31, 15, remaining: 6); 
-         (50, 15, remaining: 5); (9, 16, remaining: 7); (43, 16, remaining: 5); (13, 18, remaining: 3); 
-         (30, 18, remaining: 4); (10, 19, remaining: 3); (16, 20, remaining: 5); (24, 20, remaining: 4); 
-         (21, 21, remaining: 5); (33, 21, remaining: 3); (45, 22, remaining: 5); (15, 24, remaining: 7); 
-         (11, 25, remaining: 5); (48, 25, remaining: 4); (18, 26, remaining: 4); (29, 27, remaining: 2); 
-         (32, 27, remaining: 1); (49, 29, remaining: 1); (2, 31, remaining: 1); (28, 31, remaining: 3); 
-         (4, 33, remaining: 5); (37, 33, remaining: 3); (40, 33, remaining: 4); (36, 35, remaining: 1); 
-         (34, 36, remaining: 1); (6, 37, remaining: 4); (44, 38, remaining: 2); (38, 39, remaining: 3); 
-         (26, 40, remaining: 4); (46, 40, remaining: 1); 
-Queue 1: (7, 7, remaining: 6); 
-Queue 2: Processing: (14, 4, remaining: 3) | 
-Queue 3: (25, 3, remaining: 6); 
-Queue 4: Processing: (27, 7, remaining: 6) | 
-Queue 5: (41, 7, remaining: 4); 
+Waiting clients: (2, 8, remaining: 3); (5, 8, remaining: 3); (15, 8, remaining: 5); (22, 8, remaining: 2); 
+         (14, 9, remaining: 3); (25, 9, remaining: 6); (4, 10, remaining: 2); (7, 12, remaining: 2); 
+         (1, 13, remaining: 2); (6, 14, remaining: 6); (13, 14, remaining: 3); (18, 14, remaining: 6); 
+         (3, 15, remaining: 5); (23, 15, remaining: 5); (11, 16, remaining: 3); (16, 16, remaining: 5); 
+         (24, 18, remaining: 4); 
+Queue 1: Processing: (8, 2, remaining: 1) | 
+Queue 2: closed
+Queue 3: Processing: (20, 5, remaining: 2) | 
+Queue 4: Processing: (17, 3, remaining: 1) | 
+Queue 5: Processing: (21, 4, remaining: 1) | 
+Queue 6: (19, 7, remaining: 4); 
 
 Time 8
-Waiting clients: (1, 10, remaining: 3); (17, 10, remaining: 3); (8, 11, remaining: 4); (23, 11, remaining: 4); 
-         (47, 11, remaining: 1); (35, 12, remaining: 7); (3, 13, remaining: 3); (22, 13, remaining: 7); 
-         (39, 13, remaining: 5); (20, 15, remaining: 5); (31, 15, remaining: 6); (50, 15, remaining: 5); 
-         (9, 16, remaining: 7); (43, 16, remaining: 5); (13, 18, remaining: 3); (30, 18, remaining: 4); 
-         (10, 19, remaining: 3); (16, 20, remaining: 5); (24, 20, remaining: 4); (21, 21, remaining: 5); 
-         (33, 21, remaining: 3); (45, 22, remaining: 5); (15, 24, remaining: 7); (11, 25, remaining: 5); 
-         (48, 25, remaining: 4); (18, 26, remaining: 4); (29, 27, remaining: 2); (32, 27, remaining: 1); 
-         (49, 29, remaining: 1); (2, 31, remaining: 1); (28, 31, remaining: 3); (4, 33, remaining: 5); 
-         (37, 33, remaining: 3); (40, 33, remaining: 4); (36, 35, remaining: 1); (34, 36, remaining: 1); 
-         (6, 37, remaining: 4); (44, 38, remaining: 2); (38, 39, remaining: 3); (26, 40, remaining: 4); 
-         (46, 40, remaining: 1); 
-Queue 1: Processing: (7, 7, remaining: 5) | 
-Queue 2: Processing: (14, 4, remaining: 2) | (5, 8, remaining: 1); 
-Queue 3: Processing: (25, 3, remaining: 5) | 
-Queue 4: Processing: (27, 7, remaining: 5) | 
-Queue 5: Processing: (41, 7, remaining: 3) | 
+Waiting clients: (14, 9, remaining: 3); (25, 9, remaining: 6); (4, 10, remaining: 2); (7, 12, remaining: 2); 
+         (1, 13, remaining: 2); (6, 14, remaining: 6); (13, 14, remaining: 3); (18, 14, remaining: 6); 
+         (3, 15, remaining: 5); (23, 15, remaining: 5); (11, 16, remaining: 3); (16, 16, remaining: 5); 
+         (24, 18, remaining: 4); 
+Queue 1: (5, 8, remaining: 3); 
+Queue 2: Processing: (2, 8, remaining: 2) | 
+Queue 3: Processing: (20, 5, remaining: 1) | 
+Queue 4: (15, 8, remaining: 5); 
+Queue 5: (22, 8, remaining: 2); 
+Queue 6: Processing: (19, 7, remaining: 3) | 
 
 Time 9
-Waiting clients: (1, 10, remaining: 3); (17, 10, remaining: 3); (8, 11, remaining: 4); (23, 11, remaining: 4); 
-         (47, 11, remaining: 1); (35, 12, remaining: 7); (3, 13, remaining: 3); (22, 13, remaining: 7); 
-         (39, 13, remaining: 5); (20, 15, remaining: 5); (31, 15, remaining: 6); (50, 15, remaining: 5); 
-         (9, 16, remaining: 7); (43, 16, remaining: 5); (13, 18, remaining: 3); (30, 18, remaining: 4); 
-         (10, 19, remaining: 3); (16, 20, remaining: 5); (24, 20, remaining: 4); (21, 21, remaining: 5); 
-         (33, 21, remaining: 3); (45, 22, remaining: 5); (15, 24, remaining: 7); (11, 25, remaining: 5); 
-         (48, 25, remaining: 4); (18, 26, remaining: 4); (29, 27, remaining: 2); (32, 27, remaining: 1); 
-         (49, 29, remaining: 1); (2, 31, remaining: 1); (28, 31, remaining: 3); (4, 33, remaining: 5); 
-         (37, 33, remaining: 3); (40, 33, remaining: 4); (36, 35, remaining: 1); (34, 36, remaining: 1); 
-         (6, 37, remaining: 4); (44, 38, remaining: 2); (38, 39, remaining: 3); (26, 40, remaining: 4); 
-         (46, 40, remaining: 1); 
-Queue 1: Processing: (7, 7, remaining: 4) | 
-Queue 2: Processing: (14, 4, remaining: 1) | (5, 8, remaining: 1); 
-Queue 3: Processing: (25, 3, remaining: 4) | 
-Queue 4: Processing: (27, 7, remaining: 4) | 
-Queue 5: Processing: (41, 7, remaining: 2) | 
+Waiting clients: (4, 10, remaining: 2); (7, 12, remaining: 2); (1, 13, remaining: 2); (6, 14, remaining: 6); 
+         (13, 14, remaining: 3); (18, 14, remaining: 6); (3, 15, remaining: 5); (23, 15, remaining: 5); 
+         (11, 16, remaining: 3); (16, 16, remaining: 5); (24, 18, remaining: 4); 
+Queue 1: Processing: (5, 8, remaining: 2) | 
+Queue 2: Processing: (2, 8, remaining: 1) | 
+Queue 3: (14, 9, remaining: 3); 
+Queue 4: Processing: (15, 8, remaining: 4) | 
+Queue 5: Processing: (22, 8, remaining: 1) | (25, 9, remaining: 6); 
+Queue 6: Processing: (19, 7, remaining: 2) | 
 
 Time 10
-Waiting clients: (8, 11, remaining: 4); (23, 11, remaining: 4); (47, 11, remaining: 1); (35, 12, remaining: 7); 
-         (3, 13, remaining: 3); (22, 13, remaining: 7); (39, 13, remaining: 5); (20, 15, remaining: 5); 
-         (31, 15, remaining: 6); (50, 15, remaining: 5); (9, 16, remaining: 7); (43, 16, remaining: 5); 
-         (13, 18, remaining: 3); (30, 18, remaining: 4); (10, 19, remaining: 3); (16, 20, remaining: 5); 
-         (24, 20, remaining: 4); (21, 21, remaining: 5); (33, 21, remaining: 3); (45, 22, remaining: 5); 
-         (15, 24, remaining: 7); (11, 25, remaining: 5); (48, 25, remaining: 4); (18, 26, remaining: 4); 
-         (29, 27, remaining: 2); (32, 27, remaining: 1); (49, 29, remaining: 1); (2, 31, remaining: 1); 
-         (28, 31, remaining: 3); (4, 33, remaining: 5); (37, 33, remaining: 3); (40, 33, remaining: 4); 
-         (36, 35, remaining: 1); (34, 36, remaining: 1); (6, 37, remaining: 4); (44, 38, remaining: 2); 
-         (38, 39, remaining: 3); (26, 40, remaining: 4); (46, 40, remaining: 1); 
-Queue 1: Processing: (7, 7, remaining: 3) | 
-Queue 2: (5, 8, remaining: 1); (1, 10, remaining: 3); 
-Queue 3: Processing: (25, 3, remaining: 3) | 
-Queue 4: Processing: (27, 7, remaining: 3) | 
-Queue 5: Processing: (41, 7, remaining: 1) | (17, 10, remaining: 3); 
+Waiting clients: (7, 12, remaining: 2); (1, 13, remaining: 2); (6, 14, remaining: 6); (13, 14, remaining: 3); 
+         (18, 14, remaining: 6); (3, 15, remaining: 5); (23, 15, remaining: 5); (11, 16, remaining: 3); 
+         (16, 16, remaining: 5); (24, 18, remaining: 4); 
+Queue 1: Processing: (5, 8, remaining: 1) | (4, 10, remaining: 2); 
+Queue 2: closed
+Queue 3: Processing: (14, 9, remaining: 2) | 
+Queue 4: Processing: (15, 8, remaining: 3) | 
+Queue 5: (25, 9, remaining: 6); 
+Queue 6: Processing: (19, 7, remaining: 1) | 
 
 Time 11
-Waiting clients: (35, 12, remaining: 7); (3, 13, remaining: 3); (22, 13, remaining: 7); (39, 13, remaining: 5); 
-         (20, 15, remaining: 5); (31, 15, remaining: 6); (50, 15, remaining: 5); (9, 16, remaining: 7); 
-         (43, 16, remaining: 5); (13, 18, remaining: 3); (30, 18, remaining: 4); (10, 19, remaining: 3); 
-         (16, 20, remaining: 5); (24, 20, remaining: 4); (21, 21, remaining: 5); (33, 21, remaining: 3); 
-         (45, 22, remaining: 5); (15, 24, remaining: 7); (11, 25, remaining: 5); (48, 25, remaining: 4); 
-         (18, 26, remaining: 4); (29, 27, remaining: 2); (32, 27, remaining: 1); (49, 29, remaining: 1); 
-         (2, 31, remaining: 1); (28, 31, remaining: 3); (4, 33, remaining: 5); (37, 33, remaining: 3); 
-         (40, 33, remaining: 4); (36, 35, remaining: 1); (34, 36, remaining: 1); (6, 37, remaining: 4); 
-         (44, 38, remaining: 2); (38, 39, remaining: 3); (26, 40, remaining: 4); (46, 40, remaining: 1); 
-         
-Queue 1: Processing: (7, 7, remaining: 2) | (8, 11, remaining: 4); 
-Queue 2: (1, 10, remaining: 3); (23, 11, remaining: 4); 
-Queue 3: Processing: (25, 3, remaining: 2) | (47, 11, remaining: 1); 
-Queue 4: Processing: (27, 7, remaining: 2) | 
-Queue 5: (17, 10, remaining: 3); 
+Waiting clients: (7, 12, remaining: 2); (1, 13, remaining: 2); (6, 14, remaining: 6); (13, 14, remaining: 3); 
+         (18, 14, remaining: 6); (3, 15, remaining: 5); (23, 15, remaining: 5); (11, 16, remaining: 3); 
+         (16, 16, remaining: 5); (24, 18, remaining: 4); 
+Queue 1: (4, 10, remaining: 2); 
+Queue 2: closed
+Queue 3: Processing: (14, 9, remaining: 1) | 
+Queue 4: Processing: (15, 8, remaining: 2) | 
+Queue 5: Processing: (25, 9, remaining: 5) | 
+Queue 6: closed
 
 Time 12
-Waiting clients: (3, 13, remaining: 3); (22, 13, remaining: 7); (39, 13, remaining: 5); (20, 15, remaining: 5); 
-         (31, 15, remaining: 6); (50, 15, remaining: 5); (9, 16, remaining: 7); (43, 16, remaining: 5); 
-         (13, 18, remaining: 3); (30, 18, remaining: 4); (10, 19, remaining: 3); (16, 20, remaining: 5); 
-         (24, 20, remaining: 4); (21, 21, remaining: 5); (33, 21, remaining: 3); (45, 22, remaining: 5); 
-         (15, 24, remaining: 7); (11, 25, remaining: 5); (48, 25, remaining: 4); (18, 26, remaining: 4); 
-         (29, 27, remaining: 2); (32, 27, remaining: 1); (49, 29, remaining: 1); (2, 31, remaining: 1); 
-         (28, 31, remaining: 3); (4, 33, remaining: 5); (37, 33, remaining: 3); (40, 33, remaining: 4); 
-         (36, 35, remaining: 1); (34, 36, remaining: 1); (6, 37, remaining: 4); (44, 38, remaining: 2); 
-         (38, 39, remaining: 3); (26, 40, remaining: 4); (46, 40, remaining: 1); 
-Queue 1: Processing: (7, 7, remaining: 1) | (8, 11, remaining: 4); 
-Queue 2: Processing: (1, 10, remaining: 2) | (23, 11, remaining: 4); 
-Queue 3: Processing: (25, 3, remaining: 1) | (47, 11, remaining: 1); 
-Queue 4: Processing: (27, 7, remaining: 1) | (35, 12, remaining: 7); 
-Queue 5: Processing: (17, 10, remaining: 2) | 
+Waiting clients: (1, 13, remaining: 2); (6, 14, remaining: 6); (13, 14, remaining: 3); (18, 14, remaining: 6); 
+         (3, 15, remaining: 5); (23, 15, remaining: 5); (11, 16, remaining: 3); (16, 16, remaining: 5); 
+         (24, 18, remaining: 4); 
+Queue 1: Processing: (4, 10, remaining: 1) | 
+Queue 2: (7, 12, remaining: 2); 
+Queue 3: closed
+Queue 4: Processing: (15, 8, remaining: 1) | 
+Queue 5: Processing: (25, 9, remaining: 4) | 
+Queue 6: closed
 
 Time 13
-Waiting clients: (20, 15, remaining: 5); (31, 15, remaining: 6); (50, 15, remaining: 5); (9, 16, remaining: 7); 
-         (43, 16, remaining: 5); (13, 18, remaining: 3); (30, 18, remaining: 4); (10, 19, remaining: 3); 
-         (16, 20, remaining: 5); (24, 20, remaining: 4); (21, 21, remaining: 5); (33, 21, remaining: 3); 
-         (45, 22, remaining: 5); (15, 24, remaining: 7); (11, 25, remaining: 5); (48, 25, remaining: 4); 
-         (18, 26, remaining: 4); (29, 27, remaining: 2); (32, 27, remaining: 1); (49, 29, remaining: 1); 
-         (2, 31, remaining: 1); (28, 31, remaining: 3); (4, 33, remaining: 5); (37, 33, remaining: 3); 
-         (40, 33, remaining: 4); (36, 35, remaining: 1); (34, 36, remaining: 1); (6, 37, remaining: 4); 
-         (44, 38, remaining: 2); (38, 39, remaining: 3); (26, 40, remaining: 4); (46, 40, remaining: 1); 
+Waiting clients: (6, 14, remaining: 6); (13, 14, remaining: 3); (18, 14, remaining: 6); (3, 15, remaining: 5); 
+         (23, 15, remaining: 5); (11, 16, remaining: 3); (16, 16, remaining: 5); (24, 18, remaining: 4); 
          
-Queue 1: (8, 11, remaining: 4); (39, 13, remaining: 5); 
-Queue 2: Processing: (1, 10, remaining: 1) | (23, 11, remaining: 4); 
-Queue 3: (47, 11, remaining: 1); (3, 13, remaining: 3); 
-Queue 4: (35, 12, remaining: 7); 
-Queue 5: Processing: (17, 10, remaining: 1) | (22, 13, remaining: 7); 
+Queue 1: closed
+Queue 2: Processing: (7, 12, remaining: 1) | 
+Queue 3: Processing: (1, 13, remaining: 1) | 
+Queue 4: closed
+Queue 5: Processing: (25, 9, remaining: 3) | 
+Queue 6: closed
 
 Time 14
-Waiting clients: (20, 15, remaining: 5); (31, 15, remaining: 6); (50, 15, remaining: 5); (9, 16, remaining: 7); 
-         (43, 16, remaining: 5); (13, 18, remaining: 3); (30, 18, remaining: 4); (10, 19, remaining: 3); 
-         (16, 20, remaining: 5); (24, 20, remaining: 4); (21, 21, remaining: 5); (33, 21, remaining: 3); 
-         (45, 22, remaining: 5); (15, 24, remaining: 7); (11, 25, remaining: 5); (48, 25, remaining: 4); 
-         (18, 26, remaining: 4); (29, 27, remaining: 2); (32, 27, remaining: 1); (49, 29, remaining: 1); 
-         (2, 31, remaining: 1); (28, 31, remaining: 3); (4, 33, remaining: 5); (37, 33, remaining: 3); 
-         (40, 33, remaining: 4); (36, 35, remaining: 1); (34, 36, remaining: 1); (6, 37, remaining: 4); 
-         (44, 38, remaining: 2); (38, 39, remaining: 3); (26, 40, remaining: 4); (46, 40, remaining: 1); 
-         
-Queue 1: Processing: (8, 11, remaining: 3) | (39, 13, remaining: 5); 
-Queue 2: (23, 11, remaining: 4); 
-Queue 3: (3, 13, remaining: 3); 
-Queue 4: Processing: (35, 12, remaining: 6) | 
-Queue 5: (22, 13, remaining: 7); 
+Waiting clients: (3, 15, remaining: 5); (23, 15, remaining: 5); (11, 16, remaining: 3); (16, 16, remaining: 5); 
+         (24, 18, remaining: 4); 
+Queue 1: (6, 14, remaining: 6); 
+Queue 2: (13, 14, remaining: 3); 
+Queue 3: (18, 14, remaining: 6); 
+Queue 4: closed
+Queue 5: Processing: (25, 9, remaining: 2) | 
+Queue 6: closed
 
 Time 15
-Waiting clients: (9, 16, remaining: 7); (43, 16, remaining: 5); (13, 18, remaining: 3); (30, 18, remaining: 4); 
-         (10, 19, remaining: 3); (16, 20, remaining: 5); (24, 20, remaining: 4); (21, 21, remaining: 5); 
-         (33, 21, remaining: 3); (45, 22, remaining: 5); (15, 24, remaining: 7); (11, 25, remaining: 5); 
-         (48, 25, remaining: 4); (18, 26, remaining: 4); (29, 27, remaining: 2); (32, 27, remaining: 1); 
-         (49, 29, remaining: 1); (2, 31, remaining: 1); (28, 31, remaining: 3); (4, 33, remaining: 5); 
-         (37, 33, remaining: 3); (40, 33, remaining: 4); (36, 35, remaining: 1); (34, 36, remaining: 1); 
-         (6, 37, remaining: 4); (44, 38, remaining: 2); (38, 39, remaining: 3); (26, 40, remaining: 4); 
-         (46, 40, remaining: 1); 
-Queue 1: Processing: (8, 11, remaining: 2) | (39, 13, remaining: 5); 
-Queue 2: Processing: (23, 11, remaining: 3) | (20, 15, remaining: 5); 
-Queue 3: Processing: (3, 13, remaining: 2) | (31, 15, remaining: 6); 
-Queue 4: Processing: (35, 12, remaining: 5) | (50, 15, remaining: 5); 
-Queue 5: Processing: (22, 13, remaining: 6) | 
+Waiting clients: (11, 16, remaining: 3); (16, 16, remaining: 5); (24, 18, remaining: 4); 
+Queue 1: Processing: (6, 14, remaining: 5) | 
+Queue 2: Processing: (13, 14, remaining: 2) | 
+Queue 3: Processing: (18, 14, remaining: 5) | 
+Queue 4: Processing: (3, 15, remaining: 4) | 
+Queue 5: Processing: (25, 9, remaining: 1) | 
+Queue 6: (23, 15, remaining: 5); 
 
 Time 16
-Waiting clients: (13, 18, remaining: 3); (30, 18, remaining: 4); (10, 19, remaining: 3); (16, 20, remaining: 5); 
-         (24, 20, remaining: 4); (21, 21, remaining: 5); (33, 21, remaining: 3); (45, 22, remaining: 5); 
-         (15, 24, remaining: 7); (11, 25, remaining: 5); (48, 25, remaining: 4); (18, 26, remaining: 4); 
-         (29, 27, remaining: 2); (32, 27, remaining: 1); (49, 29, remaining: 1); (2, 31, remaining: 1); 
-         (28, 31, remaining: 3); (4, 33, remaining: 5); (37, 33, remaining: 3); (40, 33, remaining: 4); 
-         (36, 35, remaining: 1); (34, 36, remaining: 1); (6, 37, remaining: 4); (44, 38, remaining: 2); 
-         (38, 39, remaining: 3); (26, 40, remaining: 4); (46, 40, remaining: 1); 
-Queue 1: Processing: (8, 11, remaining: 1) | (39, 13, remaining: 5); (43, 16, remaining: 5); 
-Queue 2: Processing: (23, 11, remaining: 2) | (20, 15, remaining: 5); 
-Queue 3: Processing: (3, 13, remaining: 1) | (31, 15, remaining: 6); 
-Queue 4: Processing: (35, 12, remaining: 4) | (50, 15, remaining: 5); 
-Queue 5: Processing: (22, 13, remaining: 5) | (9, 16, remaining: 7); 
+Waiting clients: (24, 18, remaining: 4); 
+Queue 1: Processing: (6, 14, remaining: 4) | 
+Queue 2: Processing: (13, 14, remaining: 1) | (16, 16, remaining: 5); 
+Queue 3: Processing: (18, 14, remaining: 4) | 
+Queue 4: Processing: (3, 15, remaining: 3) | 
+Queue 5: (11, 16, remaining: 3); 
+Queue 6: Processing: (23, 15, remaining: 4) | 
 
 Time 17
-Waiting clients: (13, 18, remaining: 3); (30, 18, remaining: 4); (10, 19, remaining: 3); (16, 20, remaining: 5); 
-         (24, 20, remaining: 4); (21, 21, remaining: 5); (33, 21, remaining: 3); (45, 22, remaining: 5); 
-         (15, 24, remaining: 7); (11, 25, remaining: 5); (48, 25, remaining: 4); (18, 26, remaining: 4); 
-         (29, 27, remaining: 2); (32, 27, remaining: 1); (49, 29, remaining: 1); (2, 31, remaining: 1); 
-         (28, 31, remaining: 3); (4, 33, remaining: 5); (37, 33, remaining: 3); (40, 33, remaining: 4); 
-         (36, 35, remaining: 1); (34, 36, remaining: 1); (6, 37, remaining: 4); (44, 38, remaining: 2); 
-         (38, 39, remaining: 3); (26, 40, remaining: 4); (46, 40, remaining: 1); 
-Queue 1: (39, 13, remaining: 5); (43, 16, remaining: 5); 
-Queue 2: Processing: (23, 11, remaining: 1) | (20, 15, remaining: 5); 
-Queue 3: (31, 15, remaining: 6); 
-Queue 4: Processing: (35, 12, remaining: 3) | (50, 15, remaining: 5); 
-Queue 5: Processing: (22, 13, remaining: 4) | (9, 16, remaining: 7); 
+Waiting clients: (24, 18, remaining: 4); 
+Queue 1: Processing: (6, 14, remaining: 3) | 
+Queue 2: (16, 16, remaining: 5); 
+Queue 3: Processing: (18, 14, remaining: 3) | 
+Queue 4: Processing: (3, 15, remaining: 2) | 
+Queue 5: Processing: (11, 16, remaining: 2) | 
+Queue 6: Processing: (23, 15, remaining: 3) | 
 
 Time 18
-Waiting clients: (10, 19, remaining: 3); (16, 20, remaining: 5); (24, 20, remaining: 4); (21, 21, remaining: 5); 
-         (33, 21, remaining: 3); (45, 22, remaining: 5); (15, 24, remaining: 7); (11, 25, remaining: 5); 
-         (48, 25, remaining: 4); (18, 26, remaining: 4); (29, 27, remaining: 2); (32, 27, remaining: 1); 
-         (49, 29, remaining: 1); (2, 31, remaining: 1); (28, 31, remaining: 3); (4, 33, remaining: 5); 
-         (37, 33, remaining: 3); (40, 33, remaining: 4); (36, 35, remaining: 1); (34, 36, remaining: 1); 
-         (6, 37, remaining: 4); (44, 38, remaining: 2); (38, 39, remaining: 3); (26, 40, remaining: 4); 
-         (46, 40, remaining: 1); 
-Queue 1: Processing: (39, 13, remaining: 4) | (43, 16, remaining: 5); 
-Queue 2: (20, 15, remaining: 5); (13, 18, remaining: 3); 
-Queue 3: Processing: (31, 15, remaining: 5) | (30, 18, remaining: 4); 
-Queue 4: Processing: (35, 12, remaining: 2) | (50, 15, remaining: 5); 
-Queue 5: Processing: (22, 13, remaining: 3) | (9, 16, remaining: 7); 
+Waiting clients: none
+Queue 1: Processing: (6, 14, remaining: 2) | (24, 18, remaining: 4); 
+Queue 2: Processing: (16, 16, remaining: 4) | 
+Queue 3: Processing: (18, 14, remaining: 2) | 
+Queue 4: Processing: (3, 15, remaining: 1) | 
+Queue 5: Processing: (11, 16, remaining: 1) | 
+Queue 6: Processing: (23, 15, remaining: 2) | 
 
 Time 19
-Waiting clients: (16, 20, remaining: 5); (24, 20, remaining: 4); (21, 21, remaining: 5); (33, 21, remaining: 3); 
-         (45, 22, remaining: 5); (15, 24, remaining: 7); (11, 25, remaining: 5); (48, 25, remaining: 4); 
-         (18, 26, remaining: 4); (29, 27, remaining: 2); (32, 27, remaining: 1); (49, 29, remaining: 1); 
-         (2, 31, remaining: 1); (28, 31, remaining: 3); (4, 33, remaining: 5); (37, 33, remaining: 3); 
-         (40, 33, remaining: 4); (36, 35, remaining: 1); (34, 36, remaining: 1); (6, 37, remaining: 4); 
-         (44, 38, remaining: 2); (38, 39, remaining: 3); (26, 40, remaining: 4); (46, 40, remaining: 1); 
-         
-Queue 1: Processing: (39, 13, remaining: 3) | (43, 16, remaining: 5); 
-Queue 2: Processing: (20, 15, remaining: 4) | (13, 18, remaining: 3); (10, 19, remaining: 3); 
-Queue 3: Processing: (31, 15, remaining: 4) | (30, 18, remaining: 4); 
-Queue 4: Processing: (35, 12, remaining: 1) | (50, 15, remaining: 5); 
-Queue 5: Processing: (22, 13, remaining: 2) | (9, 16, remaining: 7); 
+Waiting clients: none
+Queue 1: Processing: (6, 14, remaining: 1) | (24, 18, remaining: 4); 
+Queue 2: Processing: (16, 16, remaining: 3) | 
+Queue 3: Processing: (18, 14, remaining: 1) | 
+Queue 4: closed
+Queue 5: closed
+Queue 6: Processing: (23, 15, remaining: 1) | 
 
 Time 20
-Waiting clients: (21, 21, remaining: 5); (33, 21, remaining: 3); (45, 22, remaining: 5); (15, 24, remaining: 7); 
-         (11, 25, remaining: 5); (48, 25, remaining: 4); (18, 26, remaining: 4); (29, 27, remaining: 2); 
-         (32, 27, remaining: 1); (49, 29, remaining: 1); (2, 31, remaining: 1); (28, 31, remaining: 3); 
-         (4, 33, remaining: 5); (37, 33, remaining: 3); (40, 33, remaining: 4); (36, 35, remaining: 1); 
-         (34, 36, remaining: 1); (6, 37, remaining: 4); (44, 38, remaining: 2); (38, 39, remaining: 3); 
-         (26, 40, remaining: 4); (46, 40, remaining: 1); 
-Queue 1: Processing: (39, 13, remaining: 2) | (43, 16, remaining: 5); (24, 20, remaining: 4); 
-Queue 2: Processing: (20, 15, remaining: 3) | (13, 18, remaining: 3); (10, 19, remaining: 3); 
-Queue 3: Processing: (31, 15, remaining: 3) | (30, 18, remaining: 4); 
-Queue 4: (50, 15, remaining: 5); (16, 20, remaining: 5); 
-Queue 5: Processing: (22, 13, remaining: 1) | (9, 16, remaining: 7); 
+Waiting clients: none
+Queue 1: (24, 18, remaining: 4); 
+Queue 2: Processing: (16, 16, remaining: 2) | 
+Queue 3: closed
+Queue 4: closed
+Queue 5: closed
+Queue 6: closed
 
 Time 21
-Waiting clients: (45, 22, remaining: 5); (15, 24, remaining: 7); (11, 25, remaining: 5); (48, 25, remaining: 4); 
-         (18, 26, remaining: 4); (29, 27, remaining: 2); (32, 27, remaining: 1); (49, 29, remaining: 1); 
-         (2, 31, remaining: 1); (28, 31, remaining: 3); (4, 33, remaining: 5); (37, 33, remaining: 3); 
-         (40, 33, remaining: 4); (36, 35, remaining: 1); (34, 36, remaining: 1); (6, 37, remaining: 4); 
-         (44, 38, remaining: 2); (38, 39, remaining: 3); (26, 40, remaining: 4); (46, 40, remaining: 1); 
-         
-Queue 1: Processing: (39, 13, remaining: 1) | (43, 16, remaining: 5); (24, 20, remaining: 4); 
-Queue 2: Processing: (20, 15, remaining: 2) | (13, 18, remaining: 3); (10, 19, remaining: 3); (33, 21, remaining: 3); 
-Queue 3: Processing: (31, 15, remaining: 2) | (30, 18, remaining: 4); (21, 21, remaining: 5); 
-Queue 4: Processing: (50, 15, remaining: 4) | (16, 20, remaining: 5); 
-Queue 5: (9, 16, remaining: 7); 
+Waiting clients: none
+Queue 1: Processing: (24, 18, remaining: 3) | 
+Queue 2: Processing: (16, 16, remaining: 1) | 
+Queue 3: closed
+Queue 4: closed
+Queue 5: closed
+Queue 6: closed
 
 Time 22
-Waiting clients: (15, 24, remaining: 7); (11, 25, remaining: 5); (48, 25, remaining: 4); (18, 26, remaining: 4); 
-         (29, 27, remaining: 2); (32, 27, remaining: 1); (49, 29, remaining: 1); (2, 31, remaining: 1); 
-         (28, 31, remaining: 3); (4, 33, remaining: 5); (37, 33, remaining: 3); (40, 33, remaining: 4); 
-         (36, 35, remaining: 1); (34, 36, remaining: 1); (6, 37, remaining: 4); (44, 38, remaining: 2); 
-         (38, 39, remaining: 3); (26, 40, remaining: 4); (46, 40, remaining: 1); 
-Queue 1: (43, 16, remaining: 5); (24, 20, remaining: 4); 
-Queue 2: Processing: (20, 15, remaining: 1) | (13, 18, remaining: 3); (10, 19, remaining: 3); (33, 21, remaining: 3); 
-Queue 3: Processing: (31, 15, remaining: 1) | (30, 18, remaining: 4); (21, 21, remaining: 5); 
-Queue 4: Processing: (50, 15, remaining: 3) | (16, 20, remaining: 5); 
-Queue 5: Processing: (9, 16, remaining: 6) | (45, 22, remaining: 5); 
+Waiting clients: none
+Queue 1: Processing: (24, 18, remaining: 2) | 
+Queue 2: closed
+Queue 3: closed
+Queue 4: closed
+Queue 5: closed
+Queue 6: closed
 
 Time 23
-Waiting clients: (15, 24, remaining: 7); (11, 25, remaining: 5); (48, 25, remaining: 4); (18, 26, remaining: 4); 
-         (29, 27, remaining: 2); (32, 27, remaining: 1); (49, 29, remaining: 1); (2, 31, remaining: 1); 
-         (28, 31, remaining: 3); (4, 33, remaining: 5); (37, 33, remaining: 3); (40, 33, remaining: 4); 
-         (36, 35, remaining: 1); (34, 36, remaining: 1); (6, 37, remaining: 4); (44, 38, remaining: 2); 
-         (38, 39, remaining: 3); (26, 40, remaining: 4); (46, 40, remaining: 1); 
-Queue 1: Processing: (43, 16, remaining: 4) | (24, 20, remaining: 4); 
-Queue 2: (13, 18, remaining: 3); (10, 19, remaining: 3); (33, 21, remaining: 3); 
-Queue 3: (30, 18, remaining: 4); (21, 21, remaining: 5); 
-Queue 4: Processing: (50, 15, remaining: 2) | (16, 20, remaining: 5); 
-Queue 5: Processing: (9, 16, remaining: 5) | (45, 22, remaining: 5); 
+Waiting clients: none
+Queue 1: Processing: (24, 18, remaining: 1) | 
+Queue 2: closed
+Queue 3: closed
+Queue 4: closed
+Queue 5: closed
+Queue 6: closed
 
 Time 24
-Waiting clients: (11, 25, remaining: 5); (48, 25, remaining: 4); (18, 26, remaining: 4); (29, 27, remaining: 2); 
-         (32, 27, remaining: 1); (49, 29, remaining: 1); (2, 31, remaining: 1); (28, 31, remaining: 3); 
-         (4, 33, remaining: 5); (37, 33, remaining: 3); (40, 33, remaining: 4); (36, 35, remaining: 1); 
-         (34, 36, remaining: 1); (6, 37, remaining: 4); (44, 38, remaining: 2); (38, 39, remaining: 3); 
-         (26, 40, remaining: 4); (46, 40, remaining: 1); 
-Queue 1: Processing: (43, 16, remaining: 3) | (24, 20, remaining: 4); 
-Queue 2: Processing: (13, 18, remaining: 2) | (10, 19, remaining: 3); (33, 21, remaining: 3); 
-Queue 3: Processing: (30, 18, remaining: 3) | (21, 21, remaining: 5); 
-Queue 4: Processing: (50, 15, remaining: 1) | (16, 20, remaining: 5); (15, 24, remaining: 7); 
-Queue 5: Processing: (9, 16, remaining: 4) | (45, 22, remaining: 5); 
+Waiting clients: none
+Queue 1: closed
+Queue 2: closed
+Queue 3: closed
+Queue 4: closed
+Queue 5: closed
+Queue 6: closed
 
 Time 25
-Waiting clients: (18, 26, remaining: 4); (29, 27, remaining: 2); (32, 27, remaining: 1); (49, 29, remaining: 1); 
-         (2, 31, remaining: 1); (28, 31, remaining: 3); (4, 33, remaining: 5); (37, 33, remaining: 3); 
-         (40, 33, remaining: 4); (36, 35, remaining: 1); (34, 36, remaining: 1); (6, 37, remaining: 4); 
-         (44, 38, remaining: 2); (38, 39, remaining: 3); (26, 40, remaining: 4); (46, 40, remaining: 1); 
-         
-Queue 1: Processing: (43, 16, remaining: 2) | (24, 20, remaining: 4); (11, 25, remaining: 5); 
-Queue 2: Processing: (13, 18, remaining: 1) | (10, 19, remaining: 3); (33, 21, remaining: 3); 
-Queue 3: Processing: (30, 18, remaining: 2) | (21, 21, remaining: 5); (48, 25, remaining: 4); 
-Queue 4: (16, 20, remaining: 5); (15, 24, remaining: 7); 
-Queue 5: Processing: (9, 16, remaining: 3) | (45, 22, remaining: 5); 
+Waiting clients: none
+Queue 1: closed
+Queue 2: closed
+Queue 3: closed
+Queue 4: closed
+Queue 5: closed
+Queue 6: closed
 
 Time 26
-Waiting clients: (29, 27, remaining: 2); (32, 27, remaining: 1); (49, 29, remaining: 1); (2, 31, remaining: 1); 
-         (28, 31, remaining: 3); (4, 33, remaining: 5); (37, 33, remaining: 3); (40, 33, remaining: 4); 
-         (36, 35, remaining: 1); (34, 36, remaining: 1); (6, 37, remaining: 4); (44, 38, remaining: 2); 
-         (38, 39, remaining: 3); (26, 40, remaining: 4); (46, 40, remaining: 1); 
-Queue 1: Processing: (43, 16, remaining: 1) | (24, 20, remaining: 4); (11, 25, remaining: 5); 
-Queue 2: (10, 19, remaining: 3); (33, 21, remaining: 3); (18, 26, remaining: 4); 
-Queue 3: Processing: (30, 18, remaining: 1) | (21, 21, remaining: 5); (48, 25, remaining: 4); 
-Queue 4: Processing: (16, 20, remaining: 4) | (15, 24, remaining: 7); 
-Queue 5: Processing: (9, 16, remaining: 2) | (45, 22, remaining: 5); 
+Waiting clients: none
+Queue 1: closed
+Queue 2: closed
+Queue 3: closed
+Queue 4: closed
+Queue 5: closed
+Queue 6: closed
 
 Time 27
-Waiting clients: (49, 29, remaining: 1); (2, 31, remaining: 1); (28, 31, remaining: 3); (4, 33, remaining: 5); 
-         (37, 33, remaining: 3); (40, 33, remaining: 4); (36, 35, remaining: 1); (34, 36, remaining: 1); 
-         (6, 37, remaining: 4); (44, 38, remaining: 2); (38, 39, remaining: 3); (26, 40, remaining: 4); 
-         (46, 40, remaining: 1); 
-Queue 1: (24, 20, remaining: 4); (11, 25, remaining: 5); (32, 27, remaining: 1); 
-Queue 2: Processing: (10, 19, remaining: 2) | (33, 21, remaining: 3); (18, 26, remaining: 4); 
-Queue 3: (21, 21, remaining: 5); (48, 25, remaining: 4); 
-Queue 4: Processing: (16, 20, remaining: 3) | (15, 24, remaining: 7); 
-Queue 5: Processing: (9, 16, remaining: 1) | (45, 22, remaining: 5); (29, 27, remaining: 2); 
+Waiting clients: none
+Queue 1: closed
+Queue 2: closed
+Queue 3: closed
+Queue 4: closed
+Queue 5: closed
+Queue 6: closed
 
 Time 28
-Waiting clients: (49, 29, remaining: 1); (2, 31, remaining: 1); (28, 31, remaining: 3); (4, 33, remaining: 5); 
-         (37, 33, remaining: 3); (40, 33, remaining: 4); (36, 35, remaining: 1); (34, 36, remaining: 1); 
-         (6, 37, remaining: 4); (44, 38, remaining: 2); (38, 39, remaining: 3); (26, 40, remaining: 4); 
-         (46, 40, remaining: 1); 
-Queue 1: Processing: (24, 20, remaining: 3) | (11, 25, remaining: 5); (32, 27, remaining: 1); 
-Queue 2: Processing: (10, 19, remaining: 1) | (33, 21, remaining: 3); (18, 26, remaining: 4); 
-Queue 3: Processing: (21, 21, remaining: 4) | (48, 25, remaining: 4); 
-Queue 4: Processing: (16, 20, remaining: 2) | (15, 24, remaining: 7); 
-Queue 5: (45, 22, remaining: 5); (29, 27, remaining: 2); 
+Waiting clients: none
+Queue 1: closed
+Queue 2: closed
+Queue 3: closed
+Queue 4: closed
+Queue 5: closed
+Queue 6: closed
 
 Time 29
-Waiting clients: (2, 31, remaining: 1); (28, 31, remaining: 3); (4, 33, remaining: 5); (37, 33, remaining: 3); 
-         (40, 33, remaining: 4); (36, 35, remaining: 1); (34, 36, remaining: 1); (6, 37, remaining: 4); 
-         (44, 38, remaining: 2); (38, 39, remaining: 3); (26, 40, remaining: 4); (46, 40, remaining: 1); 
-         
-Queue 1: Processing: (24, 20, remaining: 2) | (11, 25, remaining: 5); (32, 27, remaining: 1); 
-Queue 2: (33, 21, remaining: 3); (18, 26, remaining: 4); 
-Queue 3: Processing: (21, 21, remaining: 3) | (48, 25, remaining: 4); (49, 29, remaining: 1); 
-Queue 4: Processing: (16, 20, remaining: 1) | (15, 24, remaining: 7); 
-Queue 5: Processing: (45, 22, remaining: 4) | (29, 27, remaining: 2); 
+Waiting clients: none
+Queue 1: closed
+Queue 2: closed
+Queue 3: closed
+Queue 4: closed
+Queue 5: closed
+Queue 6: closed
 
 Time 30
-Waiting clients: (2, 31, remaining: 1); (28, 31, remaining: 3); (4, 33, remaining: 5); (37, 33, remaining: 3); 
-         (40, 33, remaining: 4); (36, 35, remaining: 1); (34, 36, remaining: 1); (6, 37, remaining: 4); 
-         (44, 38, remaining: 2); (38, 39, remaining: 3); (26, 40, remaining: 4); (46, 40, remaining: 1); 
-         
-Queue 1: Processing: (24, 20, remaining: 1) | (11, 25, remaining: 5); (32, 27, remaining: 1); 
-Queue 2: Processing: (33, 21, remaining: 2) | (18, 26, remaining: 4); 
-Queue 3: Processing: (21, 21, remaining: 2) | (48, 25, remaining: 4); (49, 29, remaining: 1); 
-Queue 4: (15, 24, remaining: 7); 
-Queue 5: Processing: (45, 22, remaining: 3) | (29, 27, remaining: 2); 
-
-Time 31
-Waiting clients: (4, 33, remaining: 5); (37, 33, remaining: 3); (40, 33, remaining: 4); (36, 35, remaining: 1); 
-         (34, 36, remaining: 1); (6, 37, remaining: 4); (44, 38, remaining: 2); (38, 39, remaining: 3); 
-         (26, 40, remaining: 4); (46, 40, remaining: 1); 
-Queue 1: (11, 25, remaining: 5); (32, 27, remaining: 1); 
-Queue 2: Processing: (33, 21, remaining: 1) | (18, 26, remaining: 4); (28, 31, remaining: 3); 
-Queue 3: Processing: (21, 21, remaining: 1) | (48, 25, remaining: 4); (49, 29, remaining: 1); 
-Queue 4: Processing: (15, 24, remaining: 6) | 
-Queue 5: Processing: (45, 22, remaining: 2) | (29, 27, remaining: 2); (2, 31, remaining: 1); 
-
-Time 32
-Waiting clients: (4, 33, remaining: 5); (37, 33, remaining: 3); (40, 33, remaining: 4); (36, 35, remaining: 1); 
-         (34, 36, remaining: 1); (6, 37, remaining: 4); (44, 38, remaining: 2); (38, 39, remaining: 3); 
-         (26, 40, remaining: 4); (46, 40, remaining: 1); 
-Queue 1: Processing: (11, 25, remaining: 4) | (32, 27, remaining: 1); 
-Queue 2: (18, 26, remaining: 4); (28, 31, remaining: 3); 
-Queue 3: (48, 25, remaining: 4); (49, 29, remaining: 1); 
-Queue 4: Processing: (15, 24, remaining: 5) | 
-Queue 5: Processing: (45, 22, remaining: 1) | (29, 27, remaining: 2); (2, 31, remaining: 1); 
-
-Time 33
-Waiting clients: (36, 35, remaining: 1); (34, 36, remaining: 1); (6, 37, remaining: 4); (44, 38, remaining: 2); 
-         (38, 39, remaining: 3); (26, 40, remaining: 4); (46, 40, remaining: 1); 
-Queue 1: Processing: (11, 25, remaining: 3) | (32, 27, remaining: 1); 
-Queue 2: Processing: (18, 26, remaining: 3) | (28, 31, remaining: 3); 
-Queue 3: Processing: (48, 25, remaining: 3) | (49, 29, remaining: 1); (4, 33, remaining: 5); 
-Queue 4: Processing: (15, 24, remaining: 4) | (37, 33, remaining: 3); 
-Queue 5: (29, 27, remaining: 2); (2, 31, remaining: 1); (40, 33, remaining: 4); 
-
-Time 34
-Waiting clients: (36, 35, remaining: 1); (34, 36, remaining: 1); (6, 37, remaining: 4); (44, 38, remaining: 2); 
-         (38, 39, remaining: 3); (26, 40, remaining: 4); (46, 40, remaining: 1); 
-Queue 1: Processing: (11, 25, remaining: 2) | (32, 27, remaining: 1); 
-Queue 2: Processing: (18, 26, remaining: 2) | (28, 31, remaining: 3); 
-Queue 3: Processing: (48, 25, remaining: 2) | (49, 29, remaining: 1); (4, 33, remaining: 5); 
-Queue 4: Processing: (15, 24, remaining: 3) | (37, 33, remaining: 3); 
-Queue 5: Processing: (29, 27, remaining: 1) | (2, 31, remaining: 1); (40, 33, remaining: 4); 
-
-Time 35
-Waiting clients: (34, 36, remaining: 1); (6, 37, remaining: 4); (44, 38, remaining: 2); (38, 39, remaining: 3); 
-         (26, 40, remaining: 4); (46, 40, remaining: 1); 
-Queue 1: Processing: (11, 25, remaining: 1) | (32, 27, remaining: 1); (36, 35, remaining: 1); 
-Queue 2: Processing: (18, 26, remaining: 1) | (28, 31, remaining: 3); 
-Queue 3: Processing: (48, 25, remaining: 1) | (49, 29, remaining: 1); (4, 33, remaining: 5); 
-Queue 4: Processing: (15, 24, remaining: 2) | (37, 33, remaining: 3); 
-Queue 5: (2, 31, remaining: 1); (40, 33, remaining: 4); 
-
-Time 36
-Waiting clients: (6, 37, remaining: 4); (44, 38, remaining: 2); (38, 39, remaining: 3); (26, 40, remaining: 4); 
-         (46, 40, remaining: 1); 
-Queue 1: (32, 27, remaining: 1); (36, 35, remaining: 1); (34, 36, remaining: 1); 
-Queue 2: (28, 31, remaining: 3); 
-Queue 3: (49, 29, remaining: 1); (4, 33, remaining: 5); 
-Queue 4: Processing: (15, 24, remaining: 1) | (37, 33, remaining: 3); 
-Queue 5: (40, 33, remaining: 4); 
-
-Time 37
-Waiting clients: (44, 38, remaining: 2); (38, 39, remaining: 3); (26, 40, remaining: 4); (46, 40, remaining: 1); 
-         
-Queue 1: (36, 35, remaining: 1); (34, 36, remaining: 1); (6, 37, remaining: 4); 
-Queue 2: Processing: (28, 31, remaining: 2) | 
-Queue 3: (4, 33, remaining: 5); 
-Queue 4: (37, 33, remaining: 3); 
-Queue 5: Processing: (40, 33, remaining: 3) | 
-
-Time 38
-Waiting clients: (38, 39, remaining: 3); (26, 40, remaining: 4); (46, 40, remaining: 1); 
-Queue 1: (34, 36, remaining: 1); (6, 37, remaining: 4); 
-Queue 2: Processing: (28, 31, remaining: 1) | (44, 38, remaining: 2); 
-Queue 3: Processing: (4, 33, remaining: 4) | 
-Queue 4: Processing: (37, 33, remaining: 2) | 
-Queue 5: Processing: (40, 33, remaining: 2) | 
-
-Time 39
-Waiting clients: (26, 40, remaining: 4); (46, 40, remaining: 1); 
-Queue 1: (6, 37, remaining: 4); 
-Queue 2: (44, 38, remaining: 2); (38, 39, remaining: 3); 
-Queue 3: Processing: (4, 33, remaining: 3) | 
-Queue 4: Processing: (37, 33, remaining: 1) | 
-Queue 5: Processing: (40, 33, remaining: 1) | 
-
-Time 40
-Waiting clients: none
-Queue 1: Processing: (6, 37, remaining: 3) | 
-Queue 2: Processing: (44, 38, remaining: 1) | (38, 39, remaining: 3); 
-Queue 3: Processing: (4, 33, remaining: 2) | 
-Queue 4: (26, 40, remaining: 4); 
-Queue 5: (46, 40, remaining: 1); 
-
-Time 41
-Waiting clients: none
-Queue 1: Processing: (6, 37, remaining: 2) | 
-Queue 2: (38, 39, remaining: 3); 
-Queue 3: Processing: (4, 33, remaining: 1) | 
-Queue 4: Processing: (26, 40, remaining: 3) | 
-Queue 5: closed
-
-Time 42
-Waiting clients: none
-Queue 1: Processing: (6, 37, remaining: 1) | 
-Queue 2: Processing: (38, 39, remaining: 2) | 
-Queue 3: closed
-Queue 4: Processing: (26, 40, remaining: 2) | 
-Queue 5: closed
-
-Time 43
-Waiting clients: none
-Queue 1: closed
-Queue 2: Processing: (38, 39, remaining: 1) | 
-Queue 3: closed
-Queue 4: Processing: (26, 40, remaining: 1) | 
-Queue 5: closed
-
-Time 44
 Waiting clients: none
 Queue 1: closed
 Queue 2: closed
 Queue 3: closed
 Queue 4: closed
 Queue 5: closed
+Queue 6: closed
 
-Time 45
-Waiting clients: none
-Queue 1: closed
-Queue 2: closed
-Queue 3: closed
-Queue 4: closed
-Queue 5: closed
-
-Time 46
-Waiting clients: none
-Queue 1: closed
-Queue 2: closed
-Queue 3: closed
-Queue 4: closed
-Queue 5: closed
-
-Time 47
-Waiting clients: none
-Queue 1: closed
-Queue 2: closed
-Queue 3: closed
-Queue 4: closed
-Queue 5: closed
-
-Time 48
-Waiting clients: none
-Queue 1: closed
-Queue 2: closed
-Queue 3: closed
-Queue 4: closed
-Queue 5: closed
-
-Time 49
-Waiting clients: none
-Queue 1: closed
-Queue 2: closed
-Queue 3: closed
-Queue 4: closed
-Queue 5: closed
-
-Time 50
-Waiting clients: none
-Queue 1: closed
-Queue 2: closed
-Queue 3: closed
-Queue 4: closed
-Queue 5: closed
-
-Time 51
-Waiting clients: none
-Queue 1: closed
-Queue 2: closed
-Queue 3: closed
-Queue 4: closed
-Queue 5: closed
-
-Time 52
-Waiting clients: none
-Queue 1: closed
-Queue 2: closed
-Queue 3: closed
-Queue 4: closed
-Queue 5: closed
-
-Time 53
-Waiting clients: none
-Queue 1: closed
-Queue 2: closed
-Queue 3: closed
-Queue 4: closed
-Queue 5: closed
-
-Time 54
-Waiting clients: none
-Queue 1: closed
-Queue 2: closed
-Queue 3: closed
-Queue 4: closed
-Queue 5: closed
-
-Time 55
-Waiting clients: none
-Queue 1: closed
-Queue 2: closed
-Queue 3: closed
-Queue 4: closed
-Queue 5: closed
-
-Time 56
-Waiting clients: none
-Queue 1: closed
-Queue 2: closed
-Queue 3: closed
-Queue 4: closed
-Queue 5: closed
-
-Time 57
-Waiting clients: none
-Queue 1: closed
-Queue 2: closed
-Queue 3: closed
-Queue 4: closed
-Queue 5: closed
-
-Time 58
-Waiting clients: none
-Queue 1: closed
-Queue 2: closed
-Queue 3: closed
-Queue 4: closed
-Queue 5: closed
-
-Time 59
-Waiting clients: none
-Queue 1: closed
-Queue 2: closed
-Queue 3: closed
-Queue 4: closed
-Queue 5: closed
-
-Time 60
-Waiting clients: none
-Queue 1: closed
-Queue 2: closed
-Queue 3: closed
-Queue 4: closed
-Queue 5: closed
-
-Average waiting time: 3,32
-Average service time: 3,82
-Peak hour: 27 (waiting clients: 10)
+Average waiting time: 0,04
+Average service time: 4,00
+Peak hour: 2 (waiting clients: 3)

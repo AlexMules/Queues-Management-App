@@ -207,6 +207,10 @@ public class SimulationManager implements Runnable, ClientCompletion {
         return clients;
     }
 
+    public ArrayList<Server> getGeneratedServers() {
+        return servers;
+    }
+
     public int getNumberOfClients() {
         return generator.getNumberOfClients();
     }

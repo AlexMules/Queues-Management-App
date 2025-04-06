@@ -1,5 +1,6 @@
 package gui;
 
+import gui.view.SimulationFrame;
 import gui.view.SimulationSetupFrame;
 import logic.SimulationManager;
 import utils.*;
@@ -168,8 +169,25 @@ public class Controller {
     }
 
     // Metoda ce pornește simularea
+    // Metoda ce pornește simularea și afișează SimulationFrame
     public void startSimulation() {
+        // Creează fereastra de simulare
+        SimulationFrame simulationFrame = new SimulationFrame("Simulation View", manager.getGeneratedServers());
+        // Închide fereastra de setup
+        frame.dispose();
+
+        SwingUtilities.invokeLater(() -> {
+            simulationFrame.setVisible(true);
+        });
+
+        // Pornește simularea
         new Thread(manager).start();
+
+        // Folosește un Swing Timer pentru a actualiza vizual starea cozilor
+        Timer timer = new Timer(1000, e -> {
+            simulationFrame.updateQueues(manager.getGeneratedServers());
+        });
+        timer.start();
     }
 
 }
