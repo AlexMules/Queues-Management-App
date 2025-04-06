@@ -3,16 +3,18 @@ package gui;
 import gui.view.SimulationFrame;
 import gui.view.SimulationSetupFrame;
 import logic.SimulationManager;
+import logic.SimulationUpdate;
 import utils.*;
 
 import javax.swing.*;
 
-public class Controller {
-    private SimulationSetupFrame frame;
+public class Controller implements SimulationUpdate {
+    private SimulationSetupFrame setupFrame;
+    private SimulationFrame simulationFrame;
     private SimulationManager manager;
 
     public Controller(SimulationSetupFrame frame, SimulationManager manager) {
-        this.frame = frame;
+        this.setupFrame = frame;
         this.manager = manager;
     }
 
@@ -145,12 +147,12 @@ public class Controller {
             validateNumberOfQueues(numberOfQueuesStr);
             validateTimeIntervals(simulationIntervalStr, minimumArrivalTimeStr, maximumArrivalTimeStr,
                                                         minimumServiceTimeStr, maximumServiceTimeStr);
-            JOptionPane.showMessageDialog(frame,
+            JOptionPane.showMessageDialog(setupFrame,
                                 "Data is valid!",
                                     "Validation Successful",
                                         JOptionPane.INFORMATION_MESSAGE);
         } catch(Exception ex){
-            JOptionPane.showMessageDialog(frame, ex.getMessage(), "Validation Error", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(setupFrame, ex.getMessage(), "Validation Error", JOptionPane.ERROR_MESSAGE);
             return;
         }
 
@@ -165,29 +167,38 @@ public class Controller {
         manager.setInputData(numberOfClients, numberOfQueues, simulationInterval, minimumArrivalTime,
                                         maximumArrivalTime, minimumServiceTime, maximumServiceTime);
         manager.generateData();
-        frame.showSimulationPanel(manager);
+        setupFrame.showSimulationPanel(manager);
     }
 
-    // Metoda ce pornește simularea
     // Metoda ce pornește simularea și afișează SimulationFrame
     public void startSimulation() {
-        // Creează fereastra de simulare
-        SimulationFrame simulationFrame = new SimulationFrame("Simulation View", manager.getGeneratedServers());
-        // Închide fereastra de setup
-        frame.dispose();
+        manager.setUpdateListener(this);
+        Thread simulationThread = new Thread(manager);
+        simulationThread.start();
 
+        simulationFrame = new SimulationFrame("Simulation View", manager.getGeneratedServers()); // referință stocată aici
+        setupFrame.dispose();
+        SwingUtilities.invokeLater(() -> simulationFrame.setVisible(true));
+
+        // Inițial update la Time 0
+        SwingUtilities.invokeLater(() ->
+                simulationFrame.updateQueues(manager.getGeneratedServers(), manager.getCurrentTime())
+        );
+    }
+
+    @Override
+    public void onSimulationUpdated(int currentTime) {
+        SwingUtilities.invokeLater(() ->
+                simulationFrame.updateQueues(manager.getGeneratedServers(), currentTime)
+        );
+    }
+
+    @Override
+    public void onSimulationEnded() {
         SwingUtilities.invokeLater(() -> {
-            simulationFrame.setVisible(true);
+            JOptionPane.showMessageDialog(null, "Simulation ended!", "End", JOptionPane.INFORMATION_MESSAGE);
+            System.exit(0);
         });
-
-        // Pornește simularea
-        new Thread(manager).start();
-
-        // Folosește un Swing Timer pentru a actualiza vizual starea cozilor
-        Timer timer = new Timer(1000, e -> {
-            simulationFrame.updateQueues(manager.getGeneratedServers());
-        });
-        timer.start();
     }
 
 }

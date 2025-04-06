@@ -14,7 +14,8 @@ public class Server implements Runnable {
     private AtomicInteger waitingPeriod;
     private SimulationClock clock;
     private volatile boolean running = true;
-    private Client processingClient; // Clientul care se procesează momentan
+    private Client processingClient;// Clientul care se procesează momentan
+    private boolean clientJustFinished = false;
     private CyclicBarrier barrier;
     private ClientCompletion completionListener;
 
@@ -43,6 +44,13 @@ public class Server implements Runnable {
             while (running) {
                 synchronized (clock.getLock()) {
                     clock.getLock().wait();
+
+                    if (clientJustFinished) {
+                        // elimină clientul după un tick
+                        processingClient = null;
+                        clientJustFinished = false;
+                    }
+
                     if (processingClient == null) {
                         processingClient = clients.poll();
                         if (processingClient != null) {
@@ -51,6 +59,7 @@ public class Server implements Runnable {
                     } else {
                         processClient();
                     }
+
                     if (processingClient != null && processingClient.getRemainingServiceTime() <= 0) {
                         int finishTime = clock.getCurrentTime();
                         int waitingTime = finishTime - processingClient.getServiceTime() - processingClient.getArrivalTime();
@@ -59,6 +68,7 @@ public class Server implements Runnable {
                         processingClient = null;
                     }
                 }
+
                 try {
                     barrier.await();
                 } catch (BrokenBarrierException e) {

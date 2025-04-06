@@ -28,6 +28,8 @@ public class SimulationManager implements Runnable, ClientCompletion {
     private int peakTime = 0;
     private int maxWaitingCount = 0;
 
+    private SimulationUpdate updateListener;
+
     public SimulationManager() {
         this.generator = new Generator();
         this.scheduler = new Scheduler();
@@ -86,30 +88,45 @@ public class SimulationManager implements Runnable, ClientCompletion {
     @Override
     public void run() {
         try (PrintWriter writer = new PrintWriter(new FileWriter("log_of_events.txt", false))) {
+            // 🔹 Afișează starea inițială - Time 0
+            String initialLog = buildLog();
+            writer.println(initialLog);
+            writer.flush();
+
+            // 🔁 Bucla principală
             while (clock.hasNextTick()) {
+                // 🔹 Tick (avansează timpul) și notifică serverele
                 synchronized (clock.getLock()) {
                     clock.tick();
                 }
 
+                // 🔹 Preia clienții care au sosit la timpul curent
                 ArrayList<Client> readyClients = getReadyClients();
                 clients.removeAll(readyClients);
                 for (Client client : readyClients) {
                     scheduler.dispatchClient(client);
                 }
 
+                // 🔹 Așteaptă ca toate thread-urile (serverele) să proceseze tick-ul
                 try {
                     barrier.await();
-                    // After barrier.await(), update the peak waiting count:
                     updateMaxWaitingCount();
                 } catch (InterruptedException | BrokenBarrierException ex) {
                     ex.printStackTrace();
                     break;
                 }
 
+                // 🔹 Scrie log-ul pentru timpul curent
                 String log = buildLog();
                 writer.println(log);
                 writer.flush();
 
+                // 🔹 Notifică UI-ul dacă există listener
+                if (updateListener != null) {
+                    updateListener.onSimulationUpdated(clock.getCurrentTime());
+                }
+
+                // 🔹 Așteaptă 1 secundă (abia la finalul iteratiei)
                 try {
                     Thread.sleep(1000);
                 } catch (InterruptedException e) {
@@ -117,17 +134,26 @@ public class SimulationManager implements Runnable, ClientCompletion {
                     break;
                 }
             }
+
+            // 🔹 La final, scrie statistici
             double avgWaitingTime = calculateAverageTime(waitingTimes);
             double avgServiceTime = calculateAverageTime(serviceTimes);
             writer.println(String.format("Average waiting time: %.2f", avgWaitingTime));
             writer.println(String.format("Average service time: %.2f", avgServiceTime));
             writer.println(String.format("Peak hour: %d (waiting clients: %d)", peakTime, maxWaitingCount));
             writer.flush();
+
+            if (updateListener != null) {
+                updateListener.onSimulationEnded();
+            }
+
         } catch (Exception e) {
             e.printStackTrace();
         }
-        stopAllServers();
+
+        stopAllServers(); // 🔚
     }
+
 
     private String buildLog() {
         StringBuilder logBuilder = new StringBuilder();
@@ -143,7 +169,7 @@ public class SimulationManager implements Runnable, ClientCompletion {
                 for (Client client : clients) {
                     logBuilder.append(client).append("; ");
                     count++;
-                    if (count % 4 == 0) {
+                    if (count % 8 == 0) {
                         logBuilder.append("\n         ");
                     }
                 }
@@ -164,7 +190,7 @@ public class SimulationManager implements Runnable, ClientCompletion {
                     for (Client client : server.getClients()) {
                         logBuilder.append(client).append("; ");
                         count++;
-                        if (count % 4 == 0) {
+                        if (count % 8 == 0) {
                             logBuilder.append("\n         ");
                         }
                     }
@@ -202,6 +228,10 @@ public class SimulationManager implements Runnable, ClientCompletion {
         serviceTimes.add(client.getServiceTime());
     }
 
+    public void setUpdateListener(SimulationUpdate listener) {
+        this.updateListener = listener;
+    }
+
     // Getters...
     public ArrayList<Client> getGeneratedClients() {
         return clients;
@@ -237,5 +267,9 @@ public class SimulationManager implements Runnable, ClientCompletion {
 
     public int getMaximumServiceTime() {
         return generator.getMaximumServiceTime();
+    }
+
+    public int getCurrentTime() {
+        return clock.getCurrentTime();
     }
 }

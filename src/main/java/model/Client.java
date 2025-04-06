@@ -15,7 +15,7 @@ public class Client {
 
     @Override
     public String toString() {
-        return "(" + id + ", " + arrivalTime + ", remaining: " + remainingServiceTime + ")";
+        return "(" + id + ", " + arrivalTime + ", " + remainingServiceTime + ")";
     }
 
     public void decrementRemainingServiceTime() {
