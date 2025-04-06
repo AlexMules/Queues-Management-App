@@ -4,6 +4,7 @@ import model.Client;
 import model.Server;
 
 import java.util.*;
+import java.util.concurrent.CyclicBarrier;
 
 public class Generator { // generates queues and clients
 
@@ -64,7 +65,7 @@ public class Generator { // generates queues and clients
     }
 
     //method that generates queues
-    public ArrayList<Server> generateServers(SimulationClock clock, java.util.concurrent.CyclicBarrier barrier) {
+    public ArrayList<Server> generateServers(SimulationClock clock, CyclicBarrier barrier) {
         ArrayList<Server> generatedServers = new ArrayList<>();
         for (int i = 1; i <= numberOfQueues; i++) {
             generatedServers.add(new Server(i, clock, barrier));

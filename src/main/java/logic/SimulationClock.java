@@ -9,14 +9,6 @@ public class SimulationClock {
         this.simulationInterval = simulationInterval;
     }
 
-    public int getCurrentTime() {
-        return currentTime;
-    }
-
-    public Object getLock() {
-        return lock;
-    }
-
     public boolean hasNextTick() {
         return currentTime < simulationInterval;
     }
@@ -27,5 +19,13 @@ public class SimulationClock {
             currentTime++;
             lock.notifyAll(); // notifică toate thread-urile care așteaptă
         }
+    }
+
+    public int getCurrentTime() {
+        return currentTime;
+    }
+
+    public Object getLock() {
+        return lock;
     }
 }

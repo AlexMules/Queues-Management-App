@@ -13,7 +13,7 @@ public class Server implements Runnable {
     private AtomicInteger waitingPeriod;
     private SimulationClock clock; // Referință la ceasul simulării
     private volatile boolean running = true;
-    private Client currentClient; // Clientul care se procesează momentan
+    private Client processingClient; // Clientul care se procesează momentan
     private CyclicBarrier barrier; // Bariera pentru sincronizarea tick-urilor
 
     public Server(int ID, SimulationClock clock, CyclicBarrier barrier) {
@@ -29,6 +29,11 @@ public class Server implements Runnable {
         waitingPeriod.addAndGet(client.getServiceTime());
     }
 
+    private void processClient() {
+        processingClient.decrementRemainingServiceTime();
+        waitingPeriod.decrementAndGet();
+    }
+
     @Override
     public void run() {
         try {
@@ -36,18 +41,16 @@ public class Server implements Runnable {
                 synchronized (clock.getLock()) {
                     clock.getLock().wait();
                     // Procesează tick-ul curent
-                    if (currentClient == null) {
-                        currentClient = clients.poll();
-                        if (currentClient != null) {
-                            currentClient.decrementRemainingServiceTime();
-                            waitingPeriod.decrementAndGet();
+                    if (processingClient == null) {
+                        processingClient = clients.poll();
+                        if (processingClient != null) {
+                            processClient();
                         }
                     } else {
-                        currentClient.decrementRemainingServiceTime();
-                        waitingPeriod.decrementAndGet();
+                        processClient();
                     }
-                    if (currentClient != null && currentClient.getRemainingServiceTime() <= 0) {
-                        currentClient = null;
+                    if (processingClient != null && processingClient.getRemainingServiceTime() <= 0) {
+                        processingClient = null;
                     }
                 }
                 // Așteaptă ca toate thread-urile să fi procesat tick-ul
@@ -71,11 +74,11 @@ public class Server implements Runnable {
     }
 
     public boolean isQueueEmpty() {
-        return clients.isEmpty() && currentClient == null;
+        return clients.isEmpty() && processingClient == null;
     }
 
-    public Client getCurrentClient() {
-        return currentClient;
+    public Client getProcessingClient() {
+        return processingClient;
     }
 
     public int getWaitingTime() {

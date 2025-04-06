@@ -5,8 +5,9 @@ import model.Server;
 import java.io.FileWriter;
 import java.io.PrintWriter;
 import java.util.ArrayList;
-import java.util.concurrent.CyclicBarrier;
+import java.util.List;
 import java.util.concurrent.BrokenBarrierException;
+import java.util.concurrent.CyclicBarrier;
 
 public class SimulationManager implements Runnable {
     private ArrayList<Client> clients;
@@ -14,9 +15,8 @@ public class SimulationManager implements Runnable {
     private int simulationInterval;
     private SimulationClock clock;
 
-    private Generator generator;
-    private Scheduler scheduler;
-    public SelectionPolicy selectionPolicy;
+    private final Generator generator;
+    private final Scheduler scheduler;
 
     private CyclicBarrier barrier; // Bariera pentru sincronizarea tick-urilor
 
@@ -31,88 +31,64 @@ public class SimulationManager implements Runnable {
         this.simulationInterval = simulationInterval;
         generator.setInputData(numberOfClients, numberOfQueues, minimumArrivalTime, maximumArrivalTime,
                 minimumServiceTime, maximumServiceTime);
-        // Creează o singură instanță de clock
         this.clock = new SimulationClock(simulationInterval);
-        // Creează bariera: numărul de părți = numărul de servere + 1 (pentru SimulationManager)
         this.barrier = new CyclicBarrier(numberOfQueues + 1);
     }
 
-    public void generateData() {
-        // Generează clienții
-        this.clients = generator.generateRandomClients();
-        // Generează serverele folosind același clock, transmitând și bariera
-        this.servers = generator.generateServers(clock, barrier);
-        // Setează serverele în Scheduler
-        this.scheduler.setServers(servers);
-        // Pornește thread-urile pentru fiecare server:
+    private void setServersForScheduler(List<Server> servers) {
+        scheduler.setServers(servers);
+    }
+
+    private void startAllServers(List<Server> servers) {
         for (Server server : servers) {
             new Thread(server).start();
         }
     }
 
+    public void generateData() {
+        this.clients = generator.generateRandomClients();
+        this.servers = generator.generateServers(clock, barrier);
+        setServersForScheduler(servers);
+        startAllServers(servers);
+    }
+
+    private ArrayList<Client> getReadyClients() {
+        ArrayList<Client> readyClients = new ArrayList<>();
+        for (Client client : new ArrayList<>(clients)) {
+            if (client.getArrivalTime() <= clock.getCurrentTime()) {
+                readyClients.add(client);
+            }
+        }
+        return readyClients;
+    }
+
     @Override
     public void run() {
-        try (PrintWriter writer = new PrintWriter(new FileWriter("simulation_log.txt", false))) {
+        try (PrintWriter writer = new PrintWriter(new FileWriter("log_of_events.txt", false))) {
             while (clock.hasNextTick()) {
-                // 1. Incrementează ceasul și notifică serverele
                 synchronized (clock.getLock()) {
                     clock.tick();
                 }
 
-                // 2. Distribuie clienții care au sosit, pe baza noului currentTime
-                ArrayList<Client> readyClients = new ArrayList<>();
-                for (Client client : new ArrayList<>(clients)) {
-                    if (client.getArrivalTime() <= clock.getCurrentTime()) {
-                        readyClients.add(client);
-                    }
-                }
+                ArrayList<Client> readyClients = getReadyClients();
                 clients.removeAll(readyClients);
+
+                //dispatch ready clients
                 for (Client client : readyClients) {
                     scheduler.dispatchClient(client);
                 }
 
-                // 3. Așteaptă ca toate serverele să-și fi actualizat starea pentru acest tick
                 try {
                     barrier.await();
-                } catch (InterruptedException | java.util.concurrent.BrokenBarrierException ex) {
+                } catch (InterruptedException | BrokenBarrierException ex) {
                     ex.printStackTrace();
                     break;
                 }
 
-                // 4. Generează log-ul stării curente
-                StringBuilder logBuilder = new StringBuilder();
-                logBuilder.append("Time ").append(clock.getCurrentTime()).append("\n");
-
-                logBuilder.append("Waiting clients: ");
-                if (clients.isEmpty()) {
-                    logBuilder.append("none");
-                } else {
-                    for (Client client : clients) {
-                        logBuilder.append(client).append("; ");
-                    }
-                }
-                logBuilder.append("\n");
-
-                for (Server server : servers) {
-                    logBuilder.append("Queue ").append(server.getId()).append(": ");
-                    Client processing = server.getCurrentClient();
-                    if (processing != null) {
-                        logBuilder.append("Processing: ").append(processing).append(" | ");
-                    }
-                    if (server.getClients().isEmpty() && processing == null) {
-                        logBuilder.append("closed");
-                    } else {
-                        for (Client client : server.getClients()) {
-                            logBuilder.append(client).append("; ");
-                        }
-                    }
-                    logBuilder.append("\n");
-                }
-
-                writer.println(logBuilder.toString());
+                String log = buildLog();
+                writer.println(log);
                 writer.flush();
 
-                // 5. Așteaptă 1 secundă înainte de următorul tick
                 try {
                     Thread.sleep(1000);
                 } catch (InterruptedException e) {
@@ -124,7 +100,42 @@ public class SimulationManager implements Runnable {
             e.printStackTrace();
         }
 
-        // La terminarea simulării, semnalăm serverelor să se oprească
+        stopAllServers();
+    }
+
+    private String buildLog() {
+        StringBuilder logBuilder = new StringBuilder();
+        synchronized (clock.getLock()) {
+            logBuilder.append("Time ").append(clock.getCurrentTime()).append("\n");
+            logBuilder.append("Waiting clients: ");
+            if (clients.isEmpty()) {
+                logBuilder.append("none");
+            } else {
+                for (Client client : clients) {
+                    logBuilder.append(client).append("; ");
+                }
+            }
+            logBuilder.append("\n");
+            for (Server server : servers) {
+                logBuilder.append("Queue ").append(server.getId()).append(": ");
+                Client processing = server.getProcessingClient();
+                if (processing != null) {
+                    logBuilder.append("Processing: ").append(processing).append(" | ");
+                }
+                if (server.getClients().isEmpty() && processing == null) {
+                    logBuilder.append("closed");
+                } else {
+                    for (Client client : server.getClients()) {
+                        logBuilder.append(client).append("; ");
+                    }
+                }
+                logBuilder.append("\n");
+            }
+        }
+        return logBuilder.toString();
+    }
+
+    private void stopAllServers() {
         for (Server server : servers) {
             server.stopServer();
         }
@@ -132,10 +143,6 @@ public class SimulationManager implements Runnable {
 
     public ArrayList<Client> getGeneratedClients() {
         return clients;
-    }
-
-    public ArrayList<Server> getGeneratedServers() {
-        return servers;
     }
 
     public int getNumberOfClients() {
