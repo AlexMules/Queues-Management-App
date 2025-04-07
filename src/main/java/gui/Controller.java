@@ -191,7 +191,7 @@ public class Controller implements SimulationUpdate {
     @Override
     public void onSimulationEnded() {
         SwingUtilities.invokeLater(() -> {
-            JOptionPane.showMessageDialog(null, "Simulation ended!", "OK",
+            JOptionPane.showMessageDialog(null, "Simulation ended!", "End of simulation",
                     JOptionPane.INFORMATION_MESSAGE);
             System.exit(0);
         });

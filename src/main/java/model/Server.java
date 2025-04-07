@@ -15,9 +15,9 @@ public class Server implements Runnable {
     private AtomicInteger waitingPeriod;
     private SimulationClock clock; // simulation clock-ul coordoneaza evolutia in timp a simularii
     private volatile boolean running = true;
-    private Client processingClient; //clientul care se proceseaza
+    private volatile Client processingClient = null; //clientul care se proceseaza
     private CyclicBarrier barrier; //barrier pentru sincronizarea servers
-    private ClientCompletion completionListener; //referinta la interfata ClientCompletion
+    private volatile ClientCompletion completionListener; //referinta la interfata ClientCompletion
 
     public Server(int ID, SimulationClock clock, CyclicBarrier barrier, ClientCompletion completionListener) {
         this.ID = ID;
@@ -33,9 +33,11 @@ public class Server implements Runnable {
         waitingPeriod.addAndGet(client.getServiceTime());
     }
 
-    private void processClient() {
-        processingClient.decrementRemainingServiceTime();
-        waitingPeriod.decrementAndGet();
+    private void processClient(Client client) {
+        if(client != null) {
+            client.decrementRemainingServiceTime();
+            waitingPeriod.decrementAndGet();
+        }
     }
 
     @Override
@@ -47,19 +49,20 @@ public class Server implements Runnable {
 
                     if (processingClient == null) {
                         processingClient = clients.poll(); //extragem primul client din coada pentru procesare
-                        if (processingClient != null) {
-                            processClient();
-                        }
+                        /*if (processingClient != null) {
+                            processClient(processingClient);
+                        }*/
                     } else {
-                        processClient();
+                        processClient(processingClient);
                     }
 
                     //daca clientul a fost procesat, trimitem informatiile necesare pentru statistici (average times)
-                    if (processingClient != null && processingClient.getRemainingServiceTime() <= 0) {
+                    if (processingClient != null && processingClient.getRemainingServiceTime() == 0) {
                         int finishTime = clock.getCurrentTime();
                         int waitingTime = finishTime - processingClient.getServiceTime() - processingClient.getArrivalTime();
+                        System.out.println("finish time: " + finishTime + " waiting time: " + waitingTime);
                         completionListener.clientCompleted(processingClient, waitingTime);
-                        processingClient = null;
+                        processingClient = clients.poll();
                     }
                 }
 

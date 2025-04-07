@@ -5,6 +5,7 @@ public class Client {
     private final int arrivalTime;
     private final int serviceTime;
     private int remainingServiceTime;
+    //private int startProcessingTime = -1;
 
     public Client(int id, int arrivalTime, int serviceTime) {
         this.id = id;
@@ -17,6 +18,14 @@ public class Client {
     public String toString() {
         return "(" + id + ", " + arrivalTime + ", " + remainingServiceTime + ")";
     }
+
+    /* public void setStartProcessingTime(int time) {
+        this.startProcessingTime = time;
+    }
+
+    public int getStartProcessingTime() {
+        return startProcessingTime;
+    } */
 
     public void decrementRemainingServiceTime() {
         if (remainingServiceTime > 0) {

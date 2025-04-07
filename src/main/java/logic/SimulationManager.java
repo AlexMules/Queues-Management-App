@@ -64,7 +64,7 @@ public class SimulationManager implements Runnable, ClientCompletion {
     private ArrayList<Client> getReadyClients() {
         ArrayList<Client> readyClients = new ArrayList<>();
         for (Client client : new ArrayList<>(clients)) {
-            if (client.getArrivalTime() <= clock.getCurrentTime()) {
+            if (client.getArrivalTime() == clock.getCurrentTime()) {
                 readyClients.add(client);
             }
         }
@@ -112,7 +112,7 @@ public class SimulationManager implements Runnable, ClientCompletion {
 
     @Override
     public void run() {
-        try (PrintWriter writer = new PrintWriter(new FileWriter("log_of_events.txt", false))) {
+        try (PrintWriter writer = new PrintWriter(new FileWriter("test_1.txt", false))) {
             // afiseaza starea initiala - Time 0
             String initialLog = buildLog();
             writeToFile(writer, initialLog);
@@ -125,10 +125,12 @@ public class SimulationManager implements Runnable, ClientCompletion {
 
                 // preluam clientii care au sosit la timpul curent
                 ArrayList<Client> readyClients = getReadyClients();
-                clients.removeAll(readyClients); // ii eliminam din waiting clients
+                clients.removeAll(readyClients);// ii eliminam din waiting clients
                 for (Client client : readyClients) {
                     scheduler.dispatchClient(client);
                 }
+
+                clock.notifyAllThreads();
 
                 // asteptam ca toate thread-urile sa proceseze tick-ul
                 try {
@@ -167,7 +169,6 @@ public class SimulationManager implements Runnable, ClientCompletion {
         } catch (Exception e) {
             e.printStackTrace();
         }
-
         stopAllServers();
     }
 
@@ -272,9 +273,5 @@ public class SimulationManager implements Runnable, ClientCompletion {
 
     public int getMaximumServiceTime() {
         return generator.getMaximumServiceTime();
-    }
-
-    public int getCurrentTime() {
-        return clock.getCurrentTime();
     }
 }
