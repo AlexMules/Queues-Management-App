@@ -49,9 +49,6 @@ public class Server implements Runnable {
 
                     if (processingClient == null) {
                         processingClient = clients.poll(); //extragem primul client din coada pentru procesare
-                        /*if (processingClient != null) {
-                            processClient(processingClient);
-                        }*/
                     } else {
                         processClient(processingClient);
                     }
