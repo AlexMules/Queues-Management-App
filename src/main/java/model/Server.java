@@ -57,7 +57,6 @@ public class Server implements Runnable {
                     if (processingClient != null && processingClient.getRemainingServiceTime() == 0) {
                         int finishTime = clock.getCurrentTime();
                         int waitingTime = finishTime - processingClient.getServiceTime() - processingClient.getArrivalTime();
-                        System.out.println("finish time: " + finishTime + " waiting time: " + waitingTime);
                         completionListener.clientCompleted(processingClient, waitingTime);
                         processingClient = clients.poll();
                     }
