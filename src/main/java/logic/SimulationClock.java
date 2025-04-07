@@ -17,10 +17,10 @@ public class SimulationClock {
     public void tick() {
         synchronized(lock) {
             currentTime++;
-            //lock.notifyAll(); // notifica toate thread-urile care asteapta
         }
     }
 
+    // notifica toate thread-urile care asteapta
     public void notifyAllThreads() {
         synchronized(lock) {
             lock.notifyAll();

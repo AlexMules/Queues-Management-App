@@ -118,7 +118,7 @@ public class SimulationManager implements Runnable, ClientCompletion {
             writeToFile(writer, initialLog);
 
             while (clock.hasNextTick()) {
-                // tick avanseaza timpul de simulare si notifica serverele
+                // tick avanseaza timpul de simulare
                 synchronized (clock.getLock()) {
                     clock.tick();
                 }
@@ -130,7 +130,7 @@ public class SimulationManager implements Runnable, ClientCompletion {
                     scheduler.dispatchClient(client);
                 }
 
-                clock.notifyAllThreads();
+                clock.notifyAllThreads(); // serverele sunt notificate
 
                 // asteptam ca toate thread-urile sa proceseze tick-ul
                 try {

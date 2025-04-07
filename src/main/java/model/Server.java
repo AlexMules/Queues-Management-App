@@ -78,7 +78,7 @@ public class Server implements Runnable {
     public void stopServer() {
         running = false;
         synchronized (clock.getLock()) {
-            clock.getLock().notifyAll();
+            clock.notifyAllThreads();
         }
     }
 
