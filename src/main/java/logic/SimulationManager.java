@@ -112,7 +112,7 @@ public class SimulationManager implements Runnable, ClientCompletion {
 
     @Override
     public void run() {
-        try (PrintWriter writer = new PrintWriter(new FileWriter("test_2.txt", false))) {
+        try (PrintWriter writer = new PrintWriter(new FileWriter("test_3.txt", false))) {
             // afiseaza starea initiala - Time 0
             String initialLog = buildLog();
             writeToFile(writer, initialLog);
