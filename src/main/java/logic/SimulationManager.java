@@ -102,11 +102,26 @@ public class SimulationManager implements Runnable, ClientCompletion {
         for (int wt : listOfTimes) {
             sum += wt;
         }
-        if(count > 0){
+        if (count > 0) {
             return (double) sum / count;
-        }
-        else {
+        } else {
             return 0;
+        }
+    }
+
+    private void calculateRemainingClientsStatistics() {
+        int endTime = simulationInterval;
+        for (Server server : servers) {
+            Client processing = server.getProcessingClient();
+            if (processing != null) {
+                int processedTime = processing.getServiceTime() - processing.getRemainingServiceTime();
+                int waitingTime = endTime - processedTime - processing.getArrivalTime();
+                waitingTimes.add(waitingTime);
+            }
+            for (Client client : server.getClients()) {
+                int waitingTime = endTime - client.getArrivalTime();
+                waitingTimes.add(waitingTime);
+            }
         }
     }
 
@@ -159,6 +174,7 @@ public class SimulationManager implements Runnable, ClientCompletion {
                 }
             }
 
+            calculateRemainingClientsStatistics();
             // scrie statisticile
             writeStatisticsToFile(writer);
 
@@ -218,7 +234,7 @@ public class SimulationManager implements Runnable, ClientCompletion {
         }
         logBuilder.append("\n");
         logBuilder.append("-----------------------------------------------------------------------------------------" +
-                                                                                    "-----------------------------\n");
+                "-----------------------------\n");
         return logBuilder.toString();
     }
 
