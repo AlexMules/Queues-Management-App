@@ -152,6 +152,7 @@ public class SimulationManager implements Runnable, ClientCompletion {
                     barrier.await();
                     updateMaxWaitingCount(); // se recalculeaza peakHour si maxWaitingCount
                 } catch (InterruptedException | BrokenBarrierException ex) {
+                    System.out.println("Exception in Simulation Manager !");
                     ex.printStackTrace();
                     break;
                 }
@@ -169,6 +170,7 @@ public class SimulationManager implements Runnable, ClientCompletion {
                 try {
                     Thread.sleep(1000);
                 } catch (InterruptedException e) {
+                    System.out.println("Thread in Simulation Manager interrupted");
                     Thread.currentThread().interrupt();
                     break;
                 }
@@ -183,6 +185,7 @@ public class SimulationManager implements Runnable, ClientCompletion {
             }
 
         } catch (Exception e) {
+            System.out.println("PrintWriter Exception !");
             e.printStackTrace();
         }
         stopAllServers();

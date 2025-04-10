@@ -65,11 +65,13 @@ public class Server implements Runnable {
                 try {
                     barrier.await(); //asteapta dupa celelalte thread-uri
                 } catch (BrokenBarrierException e) {
+                    System.out.println("Barrier broken in Server");
                     e.printStackTrace();
                     break;
                 }
             }
         } catch (InterruptedException e) {
+            System.out.println("Server interrupted");
             Thread.currentThread().interrupt();
         }
     }
