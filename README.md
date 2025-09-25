@@ -16,5 +16,5 @@ The user inserts the input data in the GUI of the application, which includes:
 
 Clients are randomly generated based on this data and displayed to the user in the graphical interface. After pressing the "Start Simulation" button, a new window opens,
 displaying the real-time evolution of the queues, updated every second until the simulation ends. This allows the user to observe a possible scenario based on the input 
-data. At the end, the application closes automatically and generates a text file named **`log_of_events`**, which contains the queue evolution in text format for later 
+data. At the end, the application closes automatically and generates a text file named **`log_of_events`**, which contains the queues evolution in text format for later 
 review. It also includes statistics such as the average waiting time, the average service time and peak hour for the simulation interval.
