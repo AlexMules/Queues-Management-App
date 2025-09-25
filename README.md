@@ -1,5 +1,5 @@
 # Queue management app
-## Description
+## :notebook: Description
 The app simulates a series of clients arriving for service, entering queues, waiting, being served and finally leaving the queues. All clients are generated when the 
 simulation is started, and are characterized by three parameters: ID, arrival time (simulation time when they are ready to enter the queue) and service time 
 (waiting time when the client is in front of the queue, being served). The app tracks the total time spent by every client in the queues and computes the average 
@@ -31,6 +31,8 @@ There are two strategies for assigning clients to queues: **Empty Queue** and **
 The **`SimulationClock`** class simulates time passing. It notifies all threads (queues and the simulation manager) each time a second passes, allowing the queues to evolve over time. A ***lock*** is used as a synchronization mechanism.
 
 **`SimulationManager`** is the main class of the app. It uses the **generator** to obtain the clients and servers. After the user confirms the start of the simulation, the manager’s thread begins. It utilizes the **clock** and the **scheduler** to simulate time passing and to add arriving clients to the appropriate queues. **Server** threads are notified, and each queue processes its clients every second. For synchronization purposes, a **`CyclicBarrier`** is used, along with a concurrent collection, **`ConcurrentLinkedQueue`**, which stores waiting and service times for the final statistics.
+
+
 
 
 
